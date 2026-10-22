@@ -34,11 +34,21 @@
     };
   </script>
   <script>
-    // Real Google Consent Mode v2 & AdSense Personalization Signal Queue
+    // Google Consent Mode v2 — Must default to DENIED before any Google tags load
+    // NOTE FOR EU/UK/EEA VISITORS: For traffic from the EU/UK/EEA/Switzerland, use Google AdSense's built-in "Privacy & messaging" consent message (a Google-certified CMP) instead of this custom banner.
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      analytics_storage: 'denied'
+    });
     window.adsbygoogle = window.adsbygoogle || [];
+    window.adsbygoogle.requestNonPersonalizedAds = 1;
   </script>
+  <!-- ADSENSE SCRIPT PLACEHOLDER: Uncomment and replace YOUR_ADSENSE_PUBLISHER_ID once your site is connected to Google AdSense -->
+  <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_PUBLISHER_ID" crossorigin="anonymous"></script> -->
   <style>
     body {
       font-family: 'Inter', system-ui, -apple-system, sans-serif;
@@ -150,9 +160,11 @@
       </div>
 
       <!-- Responsive Ad Space (Top Banner) -->
+      <!-- ADSENSE PLACEHOLDER: Once AdSense is connected, replace YOUR_ADSENSE_PUBLISHER_ID and data-ad-slot, then call (adsbygoogle = window.adsbygoogle || []).push({}); for each <ins> -->
       <div class="ad-slot-box my-2">
         <div class="ad-empty-space-horizontal flex items-center justify-center">
-          <ins class="adsbygoogle" style="display:block;width:100%;" data-ad-client="ca-pub-0000000000000000" data-ad-slot="1000000001" data-ad-format="auto" data-full-width-responsive="true"></ins>
+          <ins class="adsbygoogle" style="display:block;width:100%;" data-ad-client="ca-pub-YOUR_ADSENSE_PUBLISHER_ID" data-ad-slot="1000000001" data-ad-format="auto" data-full-width-responsive="true"></ins>
+          <!-- <script>(adsbygoogle = window.adsbygoogle || []).push({});</script> -->
         </div>
       </div>
 
@@ -257,9 +269,11 @@
           </div>
 
           <!-- Responsive Ad Space (In-Content) -->
+          <!-- ADSENSE PLACEHOLDER: Once AdSense is connected, replace YOUR_ADSENSE_PUBLISHER_ID and data-ad-slot, then call (adsbygoogle = window.adsbygoogle || []).push({}); for each <ins> -->
           <div class="ad-slot-box my-4">
             <div class="ad-empty-space-horizontal flex items-center justify-center">
-              <ins class="adsbygoogle" style="display:block;width:100%;" data-ad-client="ca-pub-0000000000000000" data-ad-slot="1000000002" data-ad-format="auto" data-full-width-responsive="true"></ins>
+              <ins class="adsbygoogle" style="display:block;width:100%;" data-ad-client="ca-pub-YOUR_ADSENSE_PUBLISHER_ID" data-ad-slot="1000000002" data-ad-format="auto" data-full-width-responsive="true"></ins>
+              <!-- <script>(adsbygoogle = window.adsbygoogle || []).push({});</script> -->
             </div>
           </div>
 
@@ -559,9 +573,11 @@
           </div>
 
           <!-- Responsive Ad Space (Sidebar) -->
+          <!-- ADSENSE PLACEHOLDER: Once AdSense is connected, replace YOUR_ADSENSE_PUBLISHER_ID and data-ad-slot, then call (adsbygoogle = window.adsbygoogle || []).push({}); for each <ins> -->
           <div class="ad-slot-box my-2">
             <div class="ad-empty-space-rectangle flex items-center justify-center">
-              <ins class="adsbygoogle" style="display:block;width:100%;" data-ad-client="ca-pub-0000000000000000" data-ad-slot="1000000003" data-ad-format="rectangle" data-full-width-responsive="true"></ins>
+              <ins class="adsbygoogle" style="display:block;width:100%;" data-ad-client="ca-pub-YOUR_ADSENSE_PUBLISHER_ID" data-ad-slot="1000000003" data-ad-format="rectangle" data-full-width-responsive="true"></ins>
+              <!-- <script>(adsbygoogle = window.adsbygoogle || []).push({});</script> -->
             </div>
           </div>
 
@@ -1247,10 +1263,12 @@
   </main>
 
   <!-- Responsive Ad Space (Pre-Footer) -->
+  <!-- ADSENSE PLACEHOLDER: Once AdSense is connected, replace YOUR_ADSENSE_PUBLISHER_ID and data-ad-slot, then call (adsbygoogle = window.adsbygoogle || []).push({}); for each <ins> -->
   <div class="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 mt-6">
     <div class="ad-slot-box">
       <div class="ad-empty-space-horizontal flex items-center justify-center">
-        <ins class="adsbygoogle" style="display:block;width:100%;" data-ad-client="ca-pub-0000000000000000" data-ad-slot="1000000004" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <ins class="adsbygoogle" style="display:block;width:100%;" data-ad-client="ca-pub-YOUR_ADSENSE_PUBLISHER_ID" data-ad-slot="1000000004" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <!-- <script>(adsbygoogle = window.adsbygoogle || []).push({});</script> -->
       </div>
     </div>
   </div>
@@ -1312,7 +1330,7 @@
           © 2026 <strong class="text-slate-300">Rare Tool Area</strong>. Built by Nisar Khan (Islamabad, Pakistan). All rights reserved.
         </p>
         <p class="max-w-xl text-[11px] text-slate-400">
-          We use cookies to improve your experience, remember your preferences, and deliver relevant content (<span id="footer-cookie-status-text" class="text-emerald-400">All Cookies Accepted</span>). <button type="button" id="btn-open-cookie-settings" class="text-indigo-400 underline font-semibold hover:text-indigo-300">Cookie Preferences</button> • <button type="button" data-footer-legal="privacy" class="footer-legal-link text-indigo-400 underline">Privacy Policy</button>
+          We use cookies to improve your experience, remember your preferences, and deliver relevant content (<span id="footer-cookie-status-text" class="text-slate-400">Cookies not yet set</span>). <button type="button" id="btn-open-cookie-settings" class="text-indigo-400 underline font-semibold hover:text-indigo-300">Cookie Preferences</button> • <button type="button" data-footer-legal="privacy" class="footer-legal-link text-indigo-400 underline">Privacy Policy</button>
         </p>
       </div>
     </div>
@@ -1320,6 +1338,7 @@
 
   <!-- ========================================================= -->
   <!-- STANDARD POPULAR-WEBSITE COOKIE CONSENT BANNER            -->
+  <!-- NOTE: For EU/UK/EEA visitors, use AdSense's "Privacy & messaging" consent message (a Google-certified CMP) instead of this custom banner. -->
   <!-- ========================================================= -->
   <div id="cookie-consent-banner" class="fixed bottom-0 inset-x-0 z-40 hidden p-3 sm:p-4 pointer-events-none">
     <div class="max-w-5xl mx-auto bg-slate-900/95 backdrop-blur text-white rounded-2xl shadow-2xl border border-slate-700 p-4 sm:p-5 pointer-events-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
@@ -2450,8 +2469,11 @@
       }
 
       // =========================================================================
-      // REAL BROWSER COOKIE ENGINE & GOOGLE ADSENSE PERSONALIZATION SIGNALS
+      // GOOGLE CONSENT MODE v2 & COOKIE CONSENT ENGINE
+      // NOTE: For EU/UK/EEA visitors, use AdSense's "Privacy & messaging" consent message (a Google-certified CMP) instead of this custom banner.
       // =========================================================================
+      var currentConsentChoice = null; // null (unset), 'personalized', or 'essential'
+
       function setRealCookie(name, value, days) {
         try {
           var expires = '';
@@ -2461,6 +2483,12 @@
             expires = '; expires=' + date.toUTCString();
           }
           document.cookie = name + '=' + encodeURIComponent(value || '') + expires + '; path=/; SameSite=Lax';
+        } catch (e) {}
+      }
+
+      function deleteRealCookie(name) {
+        try {
+          document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; SameSite=Lax';
         } catch (e) {}
       }
 
@@ -2477,37 +2505,65 @@
         return null;
       }
 
-      function applyGoogleAdPersonalization(consentType) {
-        var isPersonalized = consentType === 'personalized';
-        // Write real HTTP cookies + localStorage fallback
-        setRealCookie('rta_cookie_consent', consentType, 365);
-        setRealCookie('rta_ad_personalization', isPersonalized ? 'granted' : 'denied', 365);
-        try {
-          localStorage.setItem('rta_cookie_consent', consentType);
-        } catch (e) {}
-
-        // Push official Google Consent Mode v2 signals to window.dataLayer
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({
-          event: 'consent_update',
-          ad_storage: isPersonalized ? 'granted' : 'denied',
-          ad_user_data: isPersonalized ? 'granted' : 'denied',
-          ad_personalization: isPersonalized ? 'granted' : 'denied',
-          analytics_storage: 'granted'
-        });
-
-        // Set Google AdSense personalization flag (0 = Personalized Ads enabled, 1 = Non-personalized)
-        window.adsbygoogle = window.adsbygoogle || [];
-        window.adsbygoogle.requestNonPersonalizedAds = isPersonalized ? 0 : 1;
-
+      function updateFooterConsentStatus(consentType) {
         var statusEl = document.getElementById('footer-cookie-status-text');
-        if (statusEl) {
-          statusEl.textContent = isPersonalized ? 'All Cookies Accepted' : 'Essential Cookies Only';
-          statusEl.className = isPersonalized ? 'text-emerald-400' : 'text-amber-400';
+        if (!statusEl) return;
+        if (consentType === 'personalized') {
+          statusEl.textContent = 'All Cookies Accepted';
+          statusEl.className = 'text-emerald-400';
+        } else if (consentType === 'essential') {
+          statusEl.textContent = 'Essential Cookies Only';
+          statusEl.className = 'text-amber-400';
+        } else {
+          statusEl.textContent = 'Cookies not yet set';
+          statusEl.className = 'text-slate-400';
         }
       }
 
+      function applyGoogleAdPersonalization(consentType) {
+        var isPersonalized = consentType === 'personalized';
+        currentConsentChoice = isPersonalized ? 'personalized' : 'essential';
+
+        // Save the user's consent choice (allowed under ePrivacy/GDPR)
+        setRealCookie('rta_cookie_consent', currentConsentChoice, 365);
+        try {
+          localStorage.setItem('rta_cookie_consent', currentConsentChoice);
+        } catch (e) {}
+
+        // Call official Google Consent Mode v2 gtag('consent', 'update', ...)
+        if (typeof gtag === 'function') {
+          gtag('consent', 'update', {
+            ad_storage: isPersonalized ? 'granted' : 'denied',
+            ad_user_data: isPersonalized ? 'granted' : 'denied',
+            ad_personalization: isPersonalized ? 'granted' : 'denied',
+            analytics_storage: isPersonalized ? 'granted' : 'denied'
+          });
+        }
+
+        // Configure AdSense personalization flag (0 = personalized, 1 = non-personalized)
+        window.adsbygoogle = window.adsbygoogle || [];
+        window.adsbygoogle.requestNonPersonalizedAds = isPersonalized ? 0 : 1;
+
+        if (isPersonalized) {
+          setRealCookie('rta_ad_personalization', 'granted', 365);
+        } else {
+          // Remove any non-essential tracking cookies if the user chose Essential Only
+          deleteRealCookie('rta_ad_personalization');
+          deleteRealCookie('rta_user_interest');
+          deleteRealCookie('rta_last_tool_used');
+          try {
+            localStorage.removeItem('rta_user_interest');
+          } catch (e) {}
+        }
+
+        updateFooterConsentStatus(currentConsentChoice);
+      }
+
       function trackUserInterestSignal(interestCategory, lastAction) {
+        // Strictly do NOT write tracking cookies or push interest events unless the user explicitly accepted all cookies
+        if (currentConsentChoice !== 'personalized') {
+          return;
+        }
         setRealCookie('rta_user_interest', interestCategory, 180);
         setRealCookie('rta_last_tool_used', lastAction, 180);
         try {
@@ -2527,12 +2583,17 @@
         try { existingConsent = localStorage.getItem('rta_cookie_consent'); } catch (e) {}
       }
 
-      if (!existingConsent) {
-        // Default to granted interest signals so AdSense can personalize immediately, and show consent banner
-        applyGoogleAdPersonalization('personalized');
-        if (cookieBanner) cookieBanner.classList.remove('hidden');
-      } else {
+      if (existingConsent === 'personalized' || existingConsent === 'essential') {
+        // Re-apply saved choice on return visits without showing the banner again
         applyGoogleAdPersonalization(existingConsent);
+        if (existingConsent === 'personalized') {
+          trackUserInterestSignal('tech-creator-seo', 'return-visit');
+        }
+      } else {
+        // First visit: keep consent DENIED (set in <head>), do not write tracking cookies, show banner
+        currentConsentChoice = null;
+        updateFooterConsentStatus(null);
+        if (cookieBanner) cookieBanner.classList.remove('hidden');
       }
 
       var btnAcceptAllCookies = document.getElementById('btn-cookie-accept-all');
@@ -2562,7 +2623,7 @@
         });
       }
 
-      // Track user interest cookies dynamically when changing niche or calculator category
+      // Track user interest cookies dynamically when changing niche or calculator category (only if consent is 'personalized')
       var selectNicheEl = document.getElementById('select-niche');
       if (selectNicheEl) {
         selectNicheEl.addEventListener('change', function () {
@@ -2576,12 +2637,11 @@
         });
       }
 
-      // Initial Boot Render (Inputs stay empty until user types)
+      // Initial Boot Render (Inputs stay empty until user types; no tracking cookies written before consent)
       updateInputAudit();
       updateCalculator();
       selectBlogArticle(0);
       updateApiStatusBadge();
-      trackUserInterestSignal('tech-creator-seo', 'initial-visit');
     })();
   </script>
 </body>
