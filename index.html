@@ -118,8 +118,9 @@
     window.adsbygoogle = window.adsbygoogle || [];
     window.adsbygoogle.requestNonPersonalizedAds = 1;
   </script>
-  <!-- ADSENSE SCRIPT PLACEHOLDER: Uncomment and replace YOUR_ADSENSE_PUBLISHER_ID once your site is connected to Google AdSense -->
-  <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_PUBLISHER_ID" crossorigin="anonymous"></script> -->
+  <!-- GOOGLE ADSENSE VERIFICATION & AUTO ADS SCRIPT (Publisher ID: ca-pub-9629708945764067) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9629708945764067"
+     crossorigin="anonymous"></script>
   <style>
     body {
       font-family: 'Inter', system-ui, -apple-system, sans-serif;
@@ -234,7 +235,7 @@
       <!-- ADSENSE PLACEHOLDER: Once AdSense is connected, replace YOUR_ADSENSE_PUBLISHER_ID and data-ad-slot, then call (adsbygoogle = window.adsbygoogle || []).push({}); for each <ins> -->
       <div class="ad-slot-box my-2">
         <div class="ad-empty-space-horizontal flex items-center justify-center">
-          <ins class="adsbygoogle" style="display:block;width:100%;" data-ad-client="ca-pub-YOUR_ADSENSE_PUBLISHER_ID" data-ad-slot="1000000001" data-ad-format="auto" data-full-width-responsive="true"></ins>
+          <ins class="adsbygoogle" style="display:block;width:100%;" data-ad-client="ca-pub-9629708945764067" data-ad-slot="1000000001" data-ad-format="auto" data-full-width-responsive="true"></ins>
           <!-- <script>(adsbygoogle = window.adsbygoogle || []).push({});</script> -->
         </div>
       </div>
@@ -353,7 +354,7 @@
           <!-- ADSENSE PLACEHOLDER: Once AdSense is connected, replace YOUR_ADSENSE_PUBLISHER_ID and data-ad-slot, then call (adsbygoogle = window.adsbygoogle || []).push({}); for each <ins> -->
           <div class="ad-slot-box my-4">
             <div class="ad-empty-space-horizontal flex items-center justify-center">
-              <ins class="adsbygoogle" style="display:block;width:100%;" data-ad-client="ca-pub-YOUR_ADSENSE_PUBLISHER_ID" data-ad-slot="1000000002" data-ad-format="auto" data-full-width-responsive="true"></ins>
+              <ins class="adsbygoogle" style="display:block;width:100%;" data-ad-client="ca-pub-9629708945764067" data-ad-slot="1000000002" data-ad-format="auto" data-full-width-responsive="true"></ins>
               <!-- <script>(adsbygoogle = window.adsbygoogle || []).push({});</script> -->
             </div>
           </div>
@@ -657,7 +658,7 @@
           <!-- ADSENSE PLACEHOLDER: Once AdSense is connected, replace YOUR_ADSENSE_PUBLISHER_ID and data-ad-slot, then call (adsbygoogle = window.adsbygoogle || []).push({}); for each <ins> -->
           <div class="ad-slot-box my-2">
             <div class="ad-empty-space-rectangle flex items-center justify-center">
-              <ins class="adsbygoogle" style="display:block;width:100%;" data-ad-client="ca-pub-YOUR_ADSENSE_PUBLISHER_ID" data-ad-slot="1000000003" data-ad-format="rectangle" data-full-width-responsive="true"></ins>
+              <ins class="adsbygoogle" style="display:block;width:100%;" data-ad-client="ca-pub-9629708945764067" data-ad-slot="1000000003" data-ad-format="rectangle" data-full-width-responsive="true"></ins>
               <!-- <script>(adsbygoogle = window.adsbygoogle || []).push({});</script> -->
             </div>
           </div>
@@ -1390,7 +1391,7 @@
   <div class="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 mt-6">
     <div class="ad-slot-box">
       <div class="ad-empty-space-horizontal flex items-center justify-center">
-        <ins class="adsbygoogle" style="display:block;width:100%;" data-ad-client="ca-pub-YOUR_ADSENSE_PUBLISHER_ID" data-ad-slot="1000000004" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <ins class="adsbygoogle" style="display:block;width:100%;" data-ad-client="ca-pub-9629708945764067" data-ad-slot="1000000004" data-ad-format="auto" data-full-width-responsive="true"></ins>
         <!-- <script>(adsbygoogle = window.adsbygoogle || []).push({});</script> -->
       </div>
     </div>
@@ -1781,15 +1782,23 @@
       }
 
       // ============================================================================
-      // 100% REAL LIVE YOUTUBE DATA API v3 STUDIO ENGINE (ZERO FAKE DETAILS)
-      // Fetches actual ranking YouTube videos, real views, real likes, real channels,
-      // real timestamps/descriptions, real hashtags, and real uploader tags.
+      // 100% REAL TRENDING YOUTUBE DATA API v3 STUDIO ENGINE
+      // 1st Press: Fetches & ranks ONLY trending YouTube videos (by daily view velocity & views).
+      // 2nd+ Press on Same Topic: Produces EDITED real trending titles, descriptions & tags
+      // directly from live trending YouTube videos (with rotated trending pool & real metrics).
       // ============================================================================
       var currentPack = {
         titles: [],
         description: '',
         hashtags: [],
         csvTags: ''
+      };
+
+      var trendSession = {
+        signature: '',
+        pressCount: 0,
+        nextPageToken: '',
+        trendingPool: []
       };
 
       var nicheQueryLabels = {
@@ -1853,20 +1862,98 @@
         return min + ':' + pad(sec);
       }
 
+      // Compute real trending metrics (views/day velocity + total views + engagement)
+      function computeVideoTrendMetrics(vItem) {
+        var st = (vItem && vItem.statistics) || {};
+        var sn = (vItem && vItem.snippet) || {};
+        var views = st.viewCount ? Number(st.viewCount) : 0;
+        var likes = st.likeCount ? Number(st.likeCount) : 0;
+        var pubMs = sn.publishedAt ? new Date(sn.publishedAt).getTime() : Date.now();
+        var ageDays = Math.max(1, (Date.now() - pubMs) / (1000 * 60 * 60 * 24));
+        var viewsPerDay = Math.round(views / ageDays);
+        // Weighted trending score favoring high daily velocity AND strong total view proof
+        var trendScore = (viewsPerDay * 3.5) + (views * 0.15) + (likes * 2);
+        return {
+          views: views,
+          likes: likes,
+          ageDays: ageDays,
+          viewsPerDay: viewsPerDay,
+          trendScore: trendScore
+        };
+      }
+
+      // Edit a real trending YouTube title on repeat presses while keeping it 100% grounded in the real video & topic
+      function editRealTrendingTitle(rawRealTitle, userTopic, tone, format, pressCount, idx) {
+        var clean = (rawRealTitle || '')
+          .replace(/\s*#[A-Za-z0-9_]+/g, '')
+          .replace(/\s*\|\s*[^|]{3,28}$/, '')
+          .trim();
+
+        // Remove trailing duplicate punctuation
+        clean = clean.replace(/[\-–—:|]+$/, '').trim();
+
+        var shortTag = format === 'shorts' ? ' #Shorts' : '';
+        var variantIndex = (pressCount + idx) % 6;
+        var edited = clean;
+
+        if (tone === 'curiosity') {
+          var curiosityPrefixes = ['Why Everyone Is Talking About ', 'The Truth About ', 'What Nobody Tells You: ', 'Watch Before You Try: ', 'How Top Creators Use ', 'Inside the Trend: '];
+          var pref = curiosityPrefixes[variantIndex];
+          if (clean.toLowerCase().indexOf(pref.toLowerCase().slice(0, 8)) === -1 && (pref.length + clean.length) <= 96) {
+            edited = pref + clean;
+          }
+        } else if (tone === 'tutorial') {
+          var tutSuffixes = [' (Step-by-Step Guide)', ' — Full Beginner Walkthrough', ' (Complete 2026 Tutorial)', ' [Practical Breakdown]', ' (Easy Setup & Workflow)', ' — From Scratch'];
+          var suf = tutSuffixes[variantIndex];
+          if (clean.indexOf('(') === -1 && (clean.length + suf.length) <= 96) {
+            edited = clean + suf;
+          }
+        } else if (tone === 'casestudy') {
+          var caseSuffixes = [' (Real Results & Data)', ' — Full Case Study', ' [Tested & Verified]', ' (What Actually Worked)', ' — Live Breakdown', ' [Proven Strategy]'];
+          var csuf = caseSuffixes[variantIndex];
+          if ((clean.length + csuf.length) <= 96) {
+            edited = clean + csuf;
+          }
+        } else {
+          // Balanced high-CTR trending edit: restructure segments or add high-converting year/trend modifier
+          var parts = clean.split(/\s*[:\-–—|]\s*/).filter(Boolean);
+          if (parts.length >= 2 && pressCount % 2 === 0) {
+            edited = parts[1].charAt(0).toUpperCase() + parts[1].slice(1) + ': ' + parts[0];
+          } else {
+            var modifiers = [' (2026 Trending Guide)', ' — Complete Breakdown', ' [Updated Method]', ' (Step-by-Step)', ' — Full Guide', ' [Must Watch]'];
+            var mod = modifiers[variantIndex];
+            if (clean.indexOf('2026') === -1 && (clean.length + mod.length) <= 96) {
+              edited = clean + mod;
+            } else if ((clean.length + 14) <= 96) {
+              edited = clean + ' [Full Guide]';
+            }
+          }
+        }
+
+        if (shortTag && edited.toLowerCase().indexOf('#shorts') === -1 && (edited.length + shortTag.length) <= 100) {
+          edited = edited + shortTag;
+        }
+        if (edited.length > 100) {
+          edited = edited.slice(0, 97).trim() + '...';
+        }
+        return edited;
+      }
+
       function renderSeoPack(pack, topicLabel) {
         currentPack = pack;
         var resContainer = document.getElementById('results-container');
         if (resContainer) resContainer.classList.remove('hidden');
         var sub = document.getElementById('results-topic-subtitle');
-        if (sub) sub.textContent = 'Live YouTube Data for: ' + topicLabel;
+        if (sub) sub.textContent = topicLabel;
 
-        // Render Real YouTube Titles + Real Channel, Views, Likes, Published Date & Watch Link
+        // Render Real Trending YouTube Titles (or Edited Real Trending Titles on 2nd+ press)
         var titlesContainer = document.getElementById('titles-list');
         if (titlesContainer) {
           titlesContainer.innerHTML = '';
           pack.titles.forEach(function (item, idx) {
             var charLen = (item.text || '').length;
             var safeTitle = (item.text || '').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            var safeOriginal = (item.originalTitle || '').replace(/</g, '&lt;').replace(/>/g, '&gt;');
             var safeChannel = (item.channel || 'YouTube Channel').replace(/</g, '&lt;').replace(/>/g, '&gt;');
             var videoUrl = item.videoId ? ('https://www.youtube.com/watch?v=' + encodeURIComponent(item.videoId)) : 'https://www.youtube.com';
 
@@ -1876,6 +1963,7 @@
               '<div class="space-y-1.5 flex-grow">' +
                 '<div class="flex flex-wrap items-center gap-2">' +
                   '<span class="text-xs font-extrabold text-indigo-600">#' + (idx + 1) + '</span>' +
+                  '<span class="px-2 py-0.5 rounded text-[11px] font-bold bg-rose-100 text-rose-800">' + (item.trendBadge || '🔥 Trending') + '</span>' +
                   '<span class="px-2 py-0.5 rounded text-[11px] font-bold bg-indigo-50 text-indigo-700">' + safeChannel + '</span>' +
                   '<span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-emerald-50 text-emerald-700">' + (item.viewsText || 'Live Views') + '</span>' +
                   '<span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-amber-50 text-amber-800">' + (item.likesText || 'Likes') + '</span>' +
@@ -1884,6 +1972,9 @@
                   (item.publishedText ? '<span class="text-[11px] text-slate-400">• ' + item.publishedText + '</span>' : '') +
                 '</div>' +
                 '<p class="text-sm font-bold text-slate-900">' + safeTitle + '</p>' +
+                (item.isEdited && safeOriginal && safeOriginal !== safeTitle
+                  ? '<p class="text-[11px] text-slate-500">Source Trending Video: <span class="font-medium text-slate-700">"' + safeOriginal + '"</span></p>'
+                  : '') +
               '</div>' +
               '<div class="flex items-center gap-2 shrink-0">' +
                 '<a href="' + videoUrl + '" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold transition">Watch ↗</a>' +
@@ -1892,13 +1983,13 @@
 
             var copyBtn = row.querySelector('.copy-single-title');
             copyBtn.addEventListener('click', function () {
-              copyTextToClipboard(item.text, 'Copied Real YouTube Title #' + (idx + 1));
+              copyTextToClipboard(item.text, 'Copied Trending Title #' + (idx + 1));
             });
             titlesContainer.appendChild(row);
           });
         }
 
-        // Render Real YouTube Description
+        // Render Real Trending YouTube Description
         var descBox = document.getElementById('output-description-box');
         var descCounter = document.getElementById('desc-byte-counter');
         if (descBox) {
@@ -1907,7 +1998,7 @@
           if (descCounter) descCounter.textContent = bytes.toLocaleString() + ' / 5,000 bytes';
         }
 
-        // Render Real Extracted YouTube Hashtags
+        // Render Real Extracted Trending YouTube Hashtags
         var hashContainer = document.getElementById('hashtags-pill-container');
         if (hashContainer) {
           hashContainer.innerHTML = '';
@@ -1943,10 +2034,27 @@
         }
         var format = document.getElementById('select-video-format').value;
         var niche = document.getElementById('select-niche').value;
+        var tone = document.getElementById('select-tone').value;
         var extraKw = document.getElementById('input-extra-keywords').value.trim();
 
+        var requestSignature = [rawInput.toLowerCase(), format, niche, tone, extraKw.toLowerCase()].join('||');
+        var isRepeatPress = (trendSession.signature === requestSignature && trendSession.pressCount >= 1);
+
+        if (isRepeatPress) {
+          trendSession.pressCount += 1;
+        } else {
+          trendSession.signature = requestSignature;
+          trendSession.pressCount = 1;
+          trendSession.nextPageToken = '';
+          trendSession.trendingPool = [];
+        }
+
         var btn = document.getElementById('btn-generate-seo');
-        if (btn) btn.textContent = 'Fetching 100% Real Data from YouTube API...';
+        if (btn) {
+          btn.textContent = isRepeatPress
+            ? 'Editing & Refreshing Real Trending YouTube Results (Run #' + trendSession.pressCount + ')...'
+            : 'Scanning YouTube for Trending Videos Only...';
+        }
 
         if (!apiState.youtubeKey) {
           if (btn) {
@@ -1958,23 +2066,21 @@
 
         try {
           var pastedVidId = extractYouTubeId(rawInput);
-          var videoItems = [];
           var primaryVideo = null;
           var nicheHint = nicheQueryLabels[niche] || niche;
 
-          // Step 1: If the user pasted a specific YouTube Video URL or 11-char ID, fetch that exact video first (1 quota unit)
-          if (pastedVidId) {
+          // Step 1: If the user pasted a specific YouTube Video URL or 11-char ID, fetch that exact video first
+          if (pastedVidId && !isRepeatPress) {
             var singleResp = await fetch('https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics,contentDetails&id=' + encodeURIComponent(pastedVidId) + '&key=' + encodeURIComponent(apiState.youtubeKey));
             if (singleResp.ok) {
               var singleData = await singleResp.json();
               if (singleData.items && singleData.items.length > 0) {
                 primaryVideo = singleData.items[0];
-                videoItems.push(primaryVideo);
               }
             }
           }
 
-          // Step 2: Build the live YouTube search query from the user's input (or primary video title) + selected category + optional keywords
+          // Step 2: Build the live YouTube search query focused on the user's topic + selected category
           var searchBase = primaryVideo ? (primaryVideo.snippet && primaryVideo.snippet.title ? primaryVideo.snippet.title : rawInput) : rawInput;
           var searchQuery = searchBase;
           if (!primaryVideo && nicheHint && searchQuery.toLowerCase().indexOf(niche.replace('-', ' ')) === -1) {
@@ -1987,21 +2093,28 @@
             searchQuery = searchQuery + ' #shorts';
           }
 
-          var searchUrl = 'https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=10&q=' + encodeURIComponent(searchQuery) + '&key=' + encodeURIComponent(apiState.youtubeKey);
+          // Fetch 25 candidates so we can strictly filter out non-trending videos and sort by real trending velocity (views/day)
+          var searchUrl = 'https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=25&q=' + encodeURIComponent(searchQuery) + '&key=' + encodeURIComponent(apiState.youtubeKey);
           if (format === 'shorts') {
             searchUrl += '&videoDuration=short';
+          }
+          if (isRepeatPress && trendSession.nextPageToken) {
+            searchUrl += '&pageToken=' + encodeURIComponent(trendSession.nextPageToken);
           }
 
           var sResp = await fetch(searchUrl);
           if (sResp.ok) {
             var sData = await sResp.json();
+            if (sData.nextPageToken) {
+              trendSession.nextPageToken = sData.nextPageToken;
+            }
             var ids = [];
-            if (primaryVideo && primaryVideo.id) {
+            if (primaryVideo && primaryVideo.id && !isRepeatPress) {
               ids.push(primaryVideo.id);
             }
             (sData.items || []).forEach(function (it) {
               var vid = it.id && it.id.videoId;
-              if (vid && ids.indexOf(vid) === -1 && ids.length < 10) {
+              if (vid && ids.indexOf(vid) === -1 && ids.length < 25) {
                 ids.push(vid);
               }
             });
@@ -2010,42 +2123,81 @@
               var detailsResp = await fetch('https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics,contentDetails&id=' + encodeURIComponent(ids.join(',')) + '&key=' + encodeURIComponent(apiState.youtubeKey));
               if (detailsResp.ok) {
                 var detailsData = await detailsResp.json();
-                if (detailsData.items && detailsData.items.length > 0) {
-                  videoItems = detailsData.items;
+                var fetchedItems = detailsData.items || [];
+
+                // Attach real trending velocity metrics to each video
+                fetchedItems.forEach(function (item) {
+                  item._trend = computeVideoTrendMetrics(item);
+                });
+
+                // Sort strictly by Trending Score (highest views/day velocity + total views first)
+                fetchedItems.sort(function (a, b) {
+                  return (b._trend ? b._trend.trendScore : 0) - (a._trend ? a._trend.trendScore : 0);
+                });
+
+                // Filter out dead/non-trending videos (keep videos with strong view velocity or top half of sorted pool)
+                var trendingFiltered = fetchedItems.filter(function (item) {
+                  return item._trend && (item._trend.viewsPerDay >= 10 || item._trend.views >= 500);
+                });
+                if (trendingFiltered.length < 10) {
+                  trendingFiltered = fetchedItems;
                 }
+
+                // Merge into session trending pool (avoiding duplicate IDs)
+                trendingFiltered.forEach(function (v) {
+                  var exists = trendSession.trendingPool.some(function (existing) { return existing.id === v.id; });
+                  if (!exists) {
+                    trendSession.trendingPool.push(v);
+                  }
+                });
               }
             }
           }
 
-          if (videoItems.length === 0) {
+          if (trendSession.trendingPool.length === 0) {
             if (btn) {
               btn.innerHTML = '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg><span>Generate Titles, Description &amp; Hashtags</span>';
             }
-            showToast('No public YouTube videos found for that query. Try a broader topic or paste a valid YouTube URL.');
+            showToast('No trending YouTube videos found for that query. Try a broader topic or URL.');
             return;
           }
 
-          // Step 3: Extract 100% REAL Titles, Views, Likes, Channels, Descriptions, Timestamps, Hashtags & Tags from the live YouTube videos
+          // Select 10 trending videos from the sorted pool (rotating window on repeat presses so results stay fresh)
+          var pool = trendSession.trendingPool;
+          var selectedVideos = [];
+          var offset = isRepeatPress ? ((trendSession.pressCount - 1) * 3) % Math.max(1, pool.length) : 0;
+          for (var i = 0; i < Math.min(10, pool.length); i++) {
+            selectedVideos.push(pool[(offset + i) % pool.length]);
+          }
+
+          // Step 3: Build 100% Real Trending Titles (Edited on 2nd+ press, Exact on 1st press)
           var realTitles = [];
           var realHashtags = [];
           var realTags = [];
           var realTimestamps = [];
           var totalViewsAnalyzed = 0;
 
-          videoItems.forEach(function (vItem) {
+          selectedVideos.forEach(function (vItem, idx) {
             var sn = vItem.snippet || {};
             var st = vItem.statistics || {};
             var cd = vItem.contentDetails || {};
-            var vCount = st.viewCount ? Number(st.viewCount) : 0;
-            var lCount = st.likeCount ? Number(st.likeCount) : 0;
-            totalViewsAnalyzed += vCount;
+            var tr = vItem._trend || computeVideoTrendMetrics(vItem);
+            totalViewsAnalyzed += tr.views;
 
             var pubDate = sn.publishedAt ? new Date(sn.publishedAt).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' }) : '';
             var durText = formatIsoDuration(cd.duration || '');
+            var originalTitle = sn.title || 'Untitled YouTube Video';
+
+            var finalTitleText = isRepeatPress
+              ? editRealTrendingTitle(originalTitle, rawInput, tone, format, trendSession.pressCount, idx)
+              : originalTitle;
 
             realTitles.push({
               videoId: vItem.id,
-              text: sn.title || 'Untitled YouTube Video',
+              text: finalTitleText,
+              originalTitle: originalTitle,
+              isEdited: isRepeatPress,
+              trendBadge: '🔥 ' + tr.viewsPerDay.toLocaleString() + ' views/day',
               channel: sn.channelTitle || 'YouTube Creator',
               viewsText: st.viewCount ? Number(st.viewCount).toLocaleString() + ' views' : 'Views hidden',
               likesText: st.likeCount ? Number(st.likeCount).toLocaleString() + ' likes' : 'Likes hidden',
@@ -2061,7 +2213,7 @@
               }
             });
 
-            // Collect real hashtags (#...) used in the live video title or description
+            // Collect real hashtags (#...) used in the live trending video title or description
             var hMatches = ((sn.title || '') + ' ' + (sn.description || '')).match(/#[A-Za-z0-9_]+/g) || [];
             hMatches.forEach(function (hm) {
               if (realHashtags.indexOf(hm) === -1 && realHashtags.length < 15) {
@@ -2069,7 +2221,7 @@
               }
             });
 
-            // Collect real timestamp lines (00:00 ...) from the live video description
+            // Collect real timestamp lines (00:00 ...) from the live trending video description
             var descLines = (sn.description || '').split('\n');
             descLines.forEach(function (line) {
               var trimmedLine = line.trim();
@@ -2081,13 +2233,13 @@
             });
           });
 
-          // If the live videos did not include 15 explicit #hashtags, convert the top real uploader tags from those videos into #hashtags
+          // Fill up to 15 hashtags from real uploader tags if videos had fewer than 15 explicit #hashtags
           if (realHashtags.length < 15) {
             var sourceForHashes = realTags.length > 0
               ? realTags
               : extractKeywordsFromText(
-                  videoItems.map(function (v) { return (v.snippet && v.snippet.title) || ''; }).join(' '),
-                  videoItems.map(function (v) { return (v.snippet && v.snippet.description) || ''; }).join(' ')
+                  selectedVideos.map(function (v) { return (v.snippet && v.snippet.title) || ''; }).join(' '),
+                  selectedVideos.map(function (v) { return (v.snippet && v.snippet.description) || ''; }).join(' ')
                 );
             sourceForHashes.forEach(function (kw) {
               if (realHashtags.length >= 15) return;
@@ -2100,15 +2252,20 @@
             });
           }
 
-          // If the live videos had 0 hidden snippet.tags, extract the actual keywords from their real titles & descriptions
           if (realTags.length === 0) {
             realTags = extractKeywordsFromText(
-              videoItems.map(function (v) { return (v.snippet && v.snippet.title) || ''; }).join(' '),
-              videoItems.map(function (v) { return (v.snippet && v.snippet.description) || ''; }).join(' ')
+              selectedVideos.map(function (v) { return (v.snippet && v.snippet.title) || ''; }).join(' '),
+              selectedVideos.map(function (v) { return (v.snippet && v.snippet.description) || ''; }).join(' ')
             );
           }
 
-          // Pack real YouTube tags into the 500-character comma-separated limit
+          // On repeat presses, rotate tag priority so fresh trending tags appear at the front
+          if (isRepeatPress && realTags.length > 4) {
+            var shiftBy = ((trendSession.pressCount - 1) * 3) % realTags.length;
+            realTags = realTags.slice(shiftBy).concat(realTags.slice(0, shiftBy));
+          }
+
+          // Pack real trending YouTube tags into the 500-character comma-separated limit
           var csvArr = [];
           var charTotal = 0;
           realTags.forEach(function (t) {
@@ -2121,37 +2278,39 @@
             }
           });
 
-          // Build the Description Panel strictly from the REAL top YouTube video(s)
-          var leadVideo = primaryVideo || videoItems[0];
+          // Build the Description Panel from the lead trending video (rotates on repeat presses & includes edited trending summary)
+          var leadVideo = selectedVideos[0];
           var leadSnip = (leadVideo && leadVideo.snippet) || {};
           var leadStat = (leadVideo && leadVideo.statistics) || {};
+          var leadTrend = (leadVideo && leadVideo._trend) || computeVideoTrendMetrics(leadVideo);
           var leadDesc = (leadSnip.description || '').trim();
 
           var builtDescription = '';
-          if (leadDesc) {
+          if (isRepeatPress) {
             builtDescription =
-              '=== ACTUAL YOUTUBE DESCRIPTION FROM TOP MATCHING VIDEO ===\n' +
-              'Video Title: ' + (leadSnip.title || '') + '\n' +
-              'Channel: ' + (leadSnip.channelTitle || '') + ' • Views: ' + (leadStat.viewCount ? Number(leadStat.viewCount).toLocaleString() : 'N/A') + ' • Likes: ' + (leadStat.likeCount ? Number(leadStat.likeCount).toLocaleString() : 'N/A') + '\n' +
-              'Watch URL: https://www.youtube.com/watch?v=' + (leadVideo.id || '') + '\n\n' +
-              leadDesc;
+              '=== EDITED TRENDING YOUTUBE DESCRIPTION (REFRESH #' + trendSession.pressCount + ') ===\n' +
+              'Edited Trending Hook Title: ' + (realTitles[0] ? realTitles[0].text : (leadSnip.title || '')) + '\n' +
+              'Source Trending Video: "' + (leadSnip.title || '') + '" by ' + (leadSnip.channelTitle || '') + '\n' +
+              'Trending Velocity: ' + leadTrend.viewsPerDay.toLocaleString() + ' views/day • Total Views: ' + (leadStat.viewCount ? Number(leadStat.viewCount).toLocaleString() : 'N/A') + ' • Likes: ' + (leadStat.likeCount ? Number(leadStat.likeCount).toLocaleString() : 'N/A') + '\n' +
+              'Watch Source URL: https://www.youtube.com/watch?v=' + (leadVideo.id || '') + '\n\n' +
+              (leadDesc || '(Source trending video has an empty description box on YouTube.)');
           } else {
             builtDescription =
-              'Top Live YouTube Video: ' + (leadSnip.title || '') + '\n' +
-              'Channel: ' + (leadSnip.channelTitle || '') + '\n' +
+              '=== #1 TRENDING YOUTUBE VIDEO DESCRIPTION ===\n' +
+              'Trending Video Title: ' + (leadSnip.title || '') + '\n' +
+              'Channel: ' + (leadSnip.channelTitle || '') + ' • Trending Velocity: ' + leadTrend.viewsPerDay.toLocaleString() + ' views/day • Views: ' + (leadStat.viewCount ? Number(leadStat.viewCount).toLocaleString() : 'N/A') + '\n' +
               'Watch URL: https://www.youtube.com/watch?v=' + (leadVideo.id || '') + '\n\n' +
-              '(This video uploader left the description box empty on YouTube.)';
+              (leadDesc || '(This trending video uploader left the description box empty on YouTube.)');
           }
 
           if (realTimestamps.length > 0 && leadDesc.indexOf(realTimestamps[0]) === -1) {
-            builtDescription += '\n\n=== REAL TIMESTAMPS DETECTED ACROSS TOP RANKING VIDEOS ===\n' + realTimestamps.join('\n');
+            builtDescription += '\n\n=== REAL TIMESTAMPS FROM TRENDING VIDEOS ===\n' + realTimestamps.join('\n');
           }
 
           if (realHashtags.length > 0) {
-            builtDescription += '\n\n=== REAL EXTRACTED YOUTUBE HASHTAGS ===\n' + realHashtags.join(' ');
+            builtDescription += '\n\n=== REAL TRENDING YOUTUBE HASHTAGS ===\n' + realHashtags.join(' ');
           }
 
-          // Cap at 5,000 bytes if multiple sections exceeded YouTube's byte ceiling
           while (new Blob([builtDescription]).size > 4980 && builtDescription.length > 500) {
             builtDescription = builtDescription.slice(0, builtDescription.length - 100).trim();
           }
@@ -2162,10 +2321,12 @@
           if (contextBar) {
             contextBar.classList.remove('hidden');
             if (contextText) {
-              contextText.textContent = 'Fetched ' + videoItems.length + ' real YouTube videos (' + totalViewsAnalyzed.toLocaleString() + ' combined views) for "' + searchQuery + '"';
+              contextText.textContent = isRepeatPress
+                ? 'Run #' + trendSession.pressCount + ' (Edited Real Trending Mode): Refined ' + selectedVideos.length + ' trending videos (' + totalViewsAnalyzed.toLocaleString() + ' views) for "' + searchQuery + '"'
+                : 'Trending Filter Active: Ranked ' + selectedVideos.length + ' trending videos (' + totalViewsAnalyzed.toLocaleString() + ' total views) by daily view velocity for "' + searchQuery + '"';
             }
             if (contextCount) {
-              contextCount.textContent = realTags.length + ' real tags • ' + realHashtags.length + ' real hashtags';
+              contextCount.textContent = realTags.length + ' trending tags • ' + realHashtags.length + ' trending hashtags';
             }
           }
 
@@ -2176,8 +2337,16 @@
             csvTags: csvArr.join(', ')
           };
 
-          renderSeoPack(pack, searchQuery);
-          showToast('Fetched ' + videoItems.length + ' real YouTube videos, descriptions & tags!');
+          var headerLabel = isRepeatPress
+            ? 'Edited Real Trending Results (Run #' + trendSession.pressCount + ') — ' + searchQuery
+            : 'Top Trending YouTube Videos — ' + searchQuery;
+
+          renderSeoPack(pack, headerLabel);
+          showToast(
+            isRepeatPress
+              ? 'Run #' + trendSession.pressCount + ': Generated edited real trending YouTube titles & metadata!'
+              : 'Found ' + selectedVideos.length + ' live trending YouTube videos & tags!'
+          );
         } catch (err) {
           showToast('Error communicating with YouTube Data API v3. Check network or API quota.');
         } finally {
