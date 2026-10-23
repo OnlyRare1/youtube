@@ -287,12 +287,22 @@
                     Channel Category
                   </label>
                   <select id="select-niche" class="w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-800 focus:border-indigo-600 outline-none">
-                    <option value="tech">Tech, Coding &amp; AI Tutorials</option>
-                    <option value="finance">Business, Finance &amp; Side Hustles</option>
-                    <option value="creator">YouTube Growth &amp; Digital Marketing</option>
-                    <option value="gaming">Gaming &amp; Hardware Reviews</option>
-                    <option value="education">Education, Study &amp; Career Skills</option>
-                    <option value="lifestyle">Vlog, Travel &amp; Productivity</option>
+                    <option value="tech">Tech</option>
+                    <option value="coding">Coding</option>
+                    <option value="ai-tutorials">AI Tutorials</option>
+                    <option value="business">Business</option>
+                    <option value="finance">Finance</option>
+                    <option value="side-hustles">Side Hustles</option>
+                    <option value="youtube-growth">YouTube Growth</option>
+                    <option value="digital-marketing">Digital Marketing</option>
+                    <option value="gaming">Gaming</option>
+                    <option value="hardware-reviews">Hardware Reviews</option>
+                    <option value="education">Education</option>
+                    <option value="study">Study</option>
+                    <option value="career-skills">Career Skills</option>
+                    <option value="vlog">Vlog</option>
+                    <option value="travel">Travel</option>
+                    <option value="productivity">Productivity</option>
                   </select>
                 </div>
 
@@ -325,7 +335,7 @@
               <!-- Safe Separation Before Action Button -->
               <div class="pt-2 flex flex-wrap items-center justify-between gap-4">
                 <div class="text-xs text-slate-500">
-                  <span class="font-semibold text-slate-700">Engine:</span> <span id="generator-engine-note">Built-in YouTube SEO Formula Engine (Instant, 0 Quota Used)</span>
+                  <span class="font-semibold text-slate-700">Engine:</span> <span id="generator-engine-note">100% Live YouTube Data API v3 Engine (Real Titles, Views, Likes, Descriptions &amp; Tags)</span>
                 </div>
                 <button
                   type="submit"
@@ -384,10 +394,10 @@
               </button>
             </div>
 
-            <!-- Panel A: 10 Titles -->
+            <!-- Panel A: 10 Real YouTube Titles -->
             <div id="result-panel-titles" class="result-panel p-6 space-y-3">
               <div class="flex items-center justify-between text-xs text-slate-500 pb-2">
-                <span>All generated titles comply with YouTube's 100-character limit (55–70 chars ideal to avoid truncation on mobile).</span>
+                <span>100% real ranking YouTube video titles with actual channel names, live view counts, likes, and publish dates from YouTube Data API v3.</span>
                 <button type="button" id="btn-copy-all-titles" class="text-indigo-600 hover:text-indigo-800 font-semibold">Copy All 10 Titles</button>
               </div>
               <div id="titles-list" class="space-y-2.5"></div>
@@ -868,11 +878,22 @@
                     Channel Niche (Advertiser Gross CPM)
                   </label>
                   <select id="calc-niche-cpc" class="w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-800">
-                    <option value="12.50">Digital Marketing, SEO &amp; Creator Tools ($12.50 CPM)</option>
-                    <option value="22.00">Personal Finance, Investing &amp; Business ($22.00 CPM)</option>
-                    <option value="15.00">Tech Reviews, Coding &amp; AI Tutorials ($15.00 CPM)</option>
-                    <option value="9.50">Education, Productivity &amp; Career ($9.50 CPM)</option>
-                    <option value="4.20">Gaming, Entertainment &amp; Vlogs ($4.20 CPM)</option>
+                    <option value="14.50">Tech ($14.50 CPM)</option>
+                    <option value="15.50">Coding ($15.50 CPM)</option>
+                    <option value="16.80">AI Tutorials ($16.80 CPM)</option>
+                    <option value="20.00">Business ($20.00 CPM)</option>
+                    <option value="24.00">Finance ($24.00 CPM)</option>
+                    <option value="18.50">Side Hustles ($18.50 CPM)</option>
+                    <option value="12.50">YouTube Growth ($12.50 CPM)</option>
+                    <option value="16.00">Digital Marketing ($16.00 CPM)</option>
+                    <option value="4.20">Gaming ($4.20 CPM)</option>
+                    <option value="11.50">Hardware Reviews ($11.50 CPM)</option>
+                    <option value="9.80">Education ($9.80 CPM)</option>
+                    <option value="8.40">Study ($8.40 CPM)</option>
+                    <option value="13.20">Career Skills ($13.20 CPM)</option>
+                    <option value="5.50">Vlog ($5.50 CPM)</option>
+                    <option value="7.80">Travel ($7.80 CPM)</option>
+                    <option value="10.90">Productivity ($10.90 CPM)</option>
                   </select>
                 </div>
 
@@ -1759,7 +1780,11 @@
         inputTitleEl.addEventListener('input', updateInputAudit);
       }
 
-      // Built-in Smart YouTube SEO Generator Engine
+      // ============================================================================
+      // 100% REAL LIVE YOUTUBE DATA API v3 STUDIO ENGINE (ZERO FAKE DETAILS)
+      // Fetches actual ranking YouTube videos, real views, real likes, real channels,
+      // real timestamps/descriptions, real hashtags, and real uploader tags.
+      // ============================================================================
       var currentPack = {
         titles: [],
         description: '',
@@ -1767,133 +1792,65 @@
         csvTags: ''
       };
 
-      function cleanTopicCore(rawTitle) {
-        return rawTitle
-          .replace(/^(how to|best|top \d+|why|what is)\s+/i, '')
-          .replace(/\s*\(202\d\)\s*/g, '')
-          .replace(/\s+in 202\d/i, '')
-          .trim();
-      }
+      var nicheQueryLabels = {
+        'tech': 'Tech',
+        'coding': 'Coding programming',
+        'ai-tutorials': 'AI tutorial',
+        'business': 'Business',
+        'finance': 'Finance investing',
+        'side-hustles': 'Side hustle',
+        'youtube-growth': 'YouTube growth SEO',
+        'digital-marketing': 'Digital marketing',
+        'gaming': 'Gaming',
+        'hardware-reviews': 'Hardware review PC',
+        'education': 'Education lecture',
+        'study': 'Study tips',
+        'career-skills': 'Career skills',
+        'vlog': 'Vlog',
+        'travel': 'Travel guide',
+        'productivity': 'Productivity workflow'
+      };
 
-      function cap100(str) {
-        if (str.length <= 100) return str;
-        return str.slice(0, 97).trim() + '...';
-      }
-
-      function buildBuiltInSeoPack(rawTopic, format, niche, tone, extraKw) {
-        var core = cleanTopicCore(rawTopic) || 'YouTube SEO & AI Growth';
-        var capCore = core.charAt(0).toUpperCase() + core.slice(1);
-        var shortSuffix = format === 'shorts' ? ' #Shorts' : '';
-
-        var rawTitles = [
-          { text: cap100('How to Master ' + capCore + ' in 2026 (Step-by-Step Guide)' + shortSuffix), angle: 'Search SEO Winner', ctr: '9.8% Est. CTR' },
-          { text: cap100(capCore + ': The Complete Beginner to Pro Blueprint (2026)' + shortSuffix), angle: 'Authority Guide', ctr: '9.4% Est. CTR' },
-          { text: cap100('I Tested ' + capCore + ' for 30 Days — Here Is What Actually Worked'), angle: 'Case Study / Proof', ctr: '10.6% Est. CTR' },
-          { text: cap100('Stop Doing ' + capCore + ' Wrong! Do This Instead in 2026'), angle: 'Pattern Interrupt', ctr: '10.2% Est. CTR' },
-          { text: cap100('7 Proven Rules for ' + capCore + ' (Fast Results Without Guesswork)'), angle: 'Numbered Listicle', ctr: '9.1% Est. CTR' },
-          { text: cap100('How to Start ' + capCore + ' From Scratch ($0 Budget Tutorial)'), angle: 'Zero-Cost Hook', ctr: '9.7% Est. CTR' },
-          { text: cap100('The Truth About ' + capCore + ' Nobody Tells Beginners (2026)'), angle: 'Curiosity Gap', ctr: '10.4% Est. CTR' },
-          { text: cap100(capCore + ' Explained in 10 Minutes (Full Practical Walkthrough)'), angle: 'Time-Bound Value', ctr: '8.9% Est. CTR' },
-          { text: cap100('Why 90% of Beginners Fail at ' + capCore + ' (And How to Fix It)'), angle: 'Mistake Avoidance', ctr: '9.9% Est. CTR' },
-          { text: cap100('Ultimate ' + capCore + ' Checklist: Everything You Need to Know'), angle: 'Evergreen Reference', ctr: '8.8% Est. CTR' }
-        ];
-
-        var kwList = extraKw
-          ? extraKw.split(',').map(function (k) { return k.trim(); }).filter(Boolean)
-          : ['YouTube SEO', 'Creator Tools', 'Digital Marketing', '2026 Guide'];
-
-        var slugWords = core.toLowerCase().replace(/[^a-z0-9\s]/g, '').split(/\s+/).filter(function (w) { return w.length > 2; });
-        var baseHash = [];
-        if (slugWords.length >= 2) {
-          baseHash.push('#' + slugWords[0] + slugWords[1].charAt(0).toUpperCase() + slugWords[1].slice(1));
-        }
-        slugWords.slice(0, 4).forEach(function (w) {
-          baseHash.push('#' + w.charAt(0).toUpperCase() + w.slice(1));
-        });
-
-        var nicheHashtags = {
-          tech: ['#AITools', '#WebDevelopment', '#TechTutorial', '#CodingForBeginners', '#SoftwareEngineering', '#TechReview', '#Automation', '#ProductivityTools', '#DeveloperTips', '#FutureOfTech'],
-          finance: ['#BusinessGrowth', '#PassiveIncome', '#MakeMoneyOnline', '#SideHustleIdeas', '#DigitalPublishing', '#FinancialFreedom', '#OnlineBusiness', '#WebsiteMonetization', '#SmartInvesting', '#CreatorEconomy'],
-          creator: ['#YouTubeSEO', '#YouTubeGrowth', '#ContentCreator', '#VideoMarketing', '#YouTubeTips', '#GrowOnYouTube', '#CreatorStudio', '#ViralHooks', '#ChannelStrategy', '#YouTubeAlgorithm'],
-          gaming: ['#GamingSetup', '#PCGaming', '#GamerTips', '#HardwareReview', '#FPSBoost', '#GamingCommunity', '#BudgetGaming', '#TechBenchmarks', '#StreamSetup', '#Esports'],
-          education: ['#OnlineLearning', '#StudyTips', '#SkillBuilding', '#CareerGrowth', '#Tutorial2026', '#SelfImprovement', '#LearnOnline', '#DigitalSkills', '#StepByStepGuide', '#Education'],
-          lifestyle: ['#ProductivityHacks', '#DailyRoutine', '#Minimalism', '#CreatorLife', '#TimeManagement', '#WorkFromHome', '#DigitalNomad', '#LifeHacks', '#PersonalGrowth', '#Vlog']
+      function extractKeywordsFromText(titleStr, descStr) {
+        var combined = ((titleStr || '') + ' ' + (descStr || '')).toLowerCase();
+        var stopWords = {
+          'the':1,'and':1,'for':1,'with':1,'that':1,'this':1,'from':1,'your':1,'have':1,'more':1,
+          'will':1,'about':1,'what':1,'when':1,'where':1,'which':1,'into':1,'https':1,'http':1,
+          'www':1,'com':1,'youtube':1,'video':1,'watch':1,'channel':1,'subscribe':1,'like':1,
+          'share':1,'follow':1,'best':1,'just':1,'only':1,'here':1,'also':1,'how':1,'why':1,
+          'are':1,'was':1,'were':1,'been':1,'being':1,'can':1,'could':1,'should':1,'would':1
         };
-
-        var pool = baseHash.concat(nicheHashtags[niche] || nicheHashtags.tech);
-        if (format === 'shorts') pool.unshift('#Shorts', '#YouTubeShorts');
-
-        var uniqueHashtags = [];
-        pool.forEach(function (h) {
-          if (uniqueHashtags.indexOf(h) === -1 && uniqueHashtags.length < 15) {
-            uniqueHashtags.push(h);
+        var out = [];
+        var segments = (titleStr || '').split(/[\|\-–—:•\(\)]/);
+        segments.forEach(function (seg) {
+          var cleanSeg = seg.replace(/[^\w\s]/g, '').trim();
+          if (cleanSeg.length >= 4 && cleanSeg.length <= 48 && out.indexOf(cleanSeg) === -1) {
+            out.push(cleanSeg);
           }
         });
-
-        var top3Hashes = uniqueHashtags.slice(0, 3).join(' ');
-
-        // Build 5,000-byte compliant SEO Description
-        var descLines = [
-          'Want to master ' + core + ' in 2026? In this step-by-step video guide, we break down the exact workflow, proven strategies, and common mistakes to avoid around ' + core + ' (' + kwList.slice(0, 3).join(', ') + ').',
-          '',
-          'Whether you are starting from scratch or optimizing your existing workflow, this tutorial walks you through real-world examples so you can apply these steps immediately.',
-          '',
-          '⏱️ VIDEO CHAPTERS & TIMESTAMPS:',
-          '00:00 — Introduction & What You Will Learn About ' + capCore,
-          '01:15 — Core Requirements & Initial Setup Checklist',
-          '03:30 — Step 1: Structuring Your Foundation (' + (kwList[0] || 'Core Strategy') + ')',
-          '06:10 — Step 2: Practical Walkthrough & Real Examples',
-          '09:25 — Step 3: Avoiding the #1 Beginner Mistake',
-          '12:00 — How to Scale & Track Your Results in 2026',
-          '14:15 — Final Summary & Action Plan',
-          '',
-          '📌 KEY TAKEAWAYS COVERED IN THIS VIDEO:',
-          '• How to plan and execute ' + core + ' with zero guesswork',
-          '• Best practices for ' + kwList.join(', '),
-          '• Actionable benchmarks you can measure starting today',
-          '',
-          '🔗 FREE CREATOR TOOLS & RESOURCES:',
-          '• Generated with Rare Tool Area (Founded by Nisar Khan): Free AI YouTube Title, Description & Hashtag Suite',
-          '• Questions or feedback? Leave a comment below or reach out at rareyt911@gmail.com',
-          '',
-          '👍 If you found this guide helpful, please Like the video, Subscribe to the channel, and turn on notifications so you never miss our next tutorial!',
-          '',
-          top3Hashes + ' ' + uniqueHashtags.slice(3, 8).join(' ')
-        ];
-
-        var fullDescription = descLines.join('\n');
-
-        // Build Comma-Separated Backend Tags strictly under 500 characters
-        var rawTagCandidates = [
-          rawTopic.toLowerCase(),
-          core.toLowerCase(),
-          'how to ' + core.toLowerCase(),
-          core.toLowerCase() + ' 2026',
-          core.toLowerCase() + ' tutorial',
-          core.toLowerCase() + ' for beginners',
-          core.toLowerCase() + ' step by step',
-          'best ' + core.toLowerCase() + ' guide'
-        ].concat(kwList.map(function (k) { return k.toLowerCase(); }))
-         .concat(['youtube seo 2026', 'rare tool area', 'content creator tools', 'video optimization guide', 'high ctr titles']);
-
-        var csvList = [];
-        var currentLen = 0;
-        rawTagCandidates.forEach(function (tag) {
-          var clean = tag.replace(/,/g, '').trim();
-          if (!clean || csvList.indexOf(clean) !== -1) return;
-          var addedCost = csvList.length === 0 ? clean.length : clean.length + 2; // ", "
-          if (currentLen + addedCost <= 490) {
-            csvList.push(clean);
-            currentLen += addedCost;
+        var words = combined.replace(/[^a-z0-9\s]/g, ' ').split(/\s+/);
+        var freq = {};
+        words.forEach(function (w) {
+          if (w.length >= 4 && !stopWords[w] && !/^\d+$/.test(w)) {
+            freq[w] = (freq[w] || 0) + 1;
           }
         });
+        Object.keys(freq).sort(function (a, b) { return freq[b] - freq[a]; }).slice(0, 15).forEach(function (w) {
+          if (out.indexOf(w) === -1) out.push(w);
+        });
+        return out;
+      }
 
-        return {
-          titles: rawTitles,
-          description: fullDescription,
-          hashtags: uniqueHashtags,
-          csvTags: csvList.join(', ')
-        };
+      function formatIsoDuration(iso) {
+        if (!iso) return '';
+        var m = iso.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/);
+        if (!m) return '';
+        var h = parseInt(m[1] || '0', 10);
+        var min = parseInt(m[2] || '0', 10);
+        var sec = parseInt(m[3] || '0', 10);
+        var pad = function (n) { return n < 10 ? '0' + n : '' + n; };
+        if (h > 0) return h + ':' + pad(min) + ':' + pad(sec);
+        return min + ':' + pad(sec);
       }
 
       function renderSeoPack(pack, topicLabel) {
@@ -1901,46 +1858,56 @@
         var resContainer = document.getElementById('results-container');
         if (resContainer) resContainer.classList.remove('hidden');
         var sub = document.getElementById('results-topic-subtitle');
-        if (sub) sub.textContent = 'Optimized for: ' + topicLabel;
+        if (sub) sub.textContent = 'Live YouTube Data for: ' + topicLabel;
 
-        // Render 10 Titles
+        // Render Real YouTube Titles + Real Channel, Views, Likes, Published Date & Watch Link
         var titlesContainer = document.getElementById('titles-list');
         if (titlesContainer) {
           titlesContainer.innerHTML = '';
           pack.titles.forEach(function (item, idx) {
-            var charLen = item.text.length;
+            var charLen = (item.text || '').length;
+            var safeTitle = (item.text || '').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            var safeChannel = (item.channel || 'YouTube Channel').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            var videoUrl = item.videoId ? ('https://www.youtube.com/watch?v=' + encodeURIComponent(item.videoId)) : 'https://www.youtube.com';
+
             var row = document.createElement('div');
-            row.className = 'p-3.5 rounded-xl border border-slate-200 hover:border-indigo-400 bg-slate-50/60 hover:bg-white transition flex flex-col sm:flex-row sm:items-center justify-between gap-3';
+            row.className = 'p-4 rounded-xl border border-slate-200 hover:border-indigo-400 bg-slate-50/60 hover:bg-white transition flex flex-col sm:flex-row sm:items-center justify-between gap-3';
             row.innerHTML =
-              '<div class="space-y-1">' +
+              '<div class="space-y-1.5 flex-grow">' +
                 '<div class="flex flex-wrap items-center gap-2">' +
                   '<span class="text-xs font-extrabold text-indigo-600">#' + (idx + 1) + '</span>' +
-                  '<span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-indigo-50 text-indigo-700">' + item.angle + '</span>' +
-                  '<span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-emerald-50 text-emerald-700">' + item.ctr + '</span>' +
+                  '<span class="px-2 py-0.5 rounded text-[11px] font-bold bg-indigo-50 text-indigo-700">' + safeChannel + '</span>' +
+                  '<span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-emerald-50 text-emerald-700">' + (item.viewsText || 'Live Views') + '</span>' +
+                  '<span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-amber-50 text-amber-800">' + (item.likesText || 'Likes') + '</span>' +
+                  (item.durationText ? '<span class="px-2 py-0.5 rounded text-[11px] font-mono bg-slate-200 text-slate-800">' + item.durationText + '</span>' : '') +
                   '<span class="text-[11px] font-mono text-slate-500">' + charLen + '/100 chars</span>' +
+                  (item.publishedText ? '<span class="text-[11px] text-slate-400">• ' + item.publishedText + '</span>' : '') +
                 '</div>' +
-                '<p class="text-sm font-bold text-slate-900">' + item.text.replace(/</g, '&lt;') + '</p>' +
+                '<p class="text-sm font-bold text-slate-900">' + safeTitle + '</p>' +
               '</div>' +
-              '<button type="button" class="copy-single-title shrink-0 px-3 py-1.5 rounded-lg bg-white border border-slate-300 hover:bg-indigo-600 hover:text-white hover:border-indigo-600 text-xs font-semibold text-slate-700 transition">Copy Title</button>';
+              '<div class="flex items-center gap-2 shrink-0">' +
+                '<a href="' + videoUrl + '" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold transition">Watch ↗</a>' +
+                '<button type="button" class="copy-single-title px-3 py-1.5 rounded-lg bg-white border border-slate-300 hover:bg-indigo-600 hover:text-white hover:border-indigo-600 text-xs font-semibold text-slate-700 transition">Copy Title</button>' +
+              '</div>';
 
             var copyBtn = row.querySelector('.copy-single-title');
             copyBtn.addEventListener('click', function () {
-              copyTextToClipboard(item.text, 'Copied Title #' + (idx + 1));
+              copyTextToClipboard(item.text, 'Copied Real YouTube Title #' + (idx + 1));
             });
             titlesContainer.appendChild(row);
           });
         }
 
-        // Render Description
+        // Render Real YouTube Description
         var descBox = document.getElementById('output-description-box');
         var descCounter = document.getElementById('desc-byte-counter');
         if (descBox) {
           descBox.value = pack.description;
           var bytes = new Blob([pack.description]).size;
-          if (descCounter) descCounter.textContent = bytes + ' / 5,000 bytes';
+          if (descCounter) descCounter.textContent = bytes.toLocaleString() + ' / 5,000 bytes';
         }
 
-        // Render Hashtags
+        // Render Real Extracted YouTube Hashtags
         var hashContainer = document.getElementById('hashtags-pill-container');
         if (hashContainer) {
           hashContainer.innerHTML = '';
@@ -1959,44 +1926,13 @@
           });
         }
 
-        // Render Comma Tags
+        // Render Real Extracted Comma-Separated Backend Tags
         var csvBox = document.getElementById('output-csv-tags');
         var csvCounter = document.getElementById('tags-char-counter');
         if (csvBox) {
           csvBox.value = pack.csvTags;
           if (csvCounter) csvCounter.textContent = pack.csvTags.length + ' / 500 chars';
         }
-      }
-
-      function extractKeywordsFromText(titleStr, descStr) {
-        var combined = ((titleStr || '') + ' ' + (descStr || '')).toLowerCase();
-        var stopWords = {
-          'the':1,'and':1,'for':1,'with':1,'that':1,'this':1,'from':1,'your':1,'have':1,'more':1,
-          'will':1,'about':1,'what':1,'when':1,'where':1,'which':1,'into':1,'https':1,'http':1,
-          'www':1,'com':1,'youtube':1,'video':1,'watch':1,'channel':1,'subscribe':1,'like':1,
-          'share':1,'follow':1,'best':1,'just':1,'only':1,'here':1,'also':1
-        };
-        var out = [];
-        // First split title by | or - or : to get natural phrases
-        var segments = (titleStr || '').split(/[\|\-–—:•]/);
-        segments.forEach(function (seg) {
-          var cleanSeg = seg.replace(/[^\w\s₹$]/g, '').trim();
-          if (cleanSeg.length >= 4 && cleanSeg.length <= 45 && out.indexOf(cleanSeg) === -1) {
-            out.push(cleanSeg);
-          }
-        });
-        // Also extract top words
-        var words = combined.replace(/[^a-z0-9\s]/g, ' ').split(/\s+/);
-        var freq = {};
-        words.forEach(function (w) {
-          if (w.length >= 4 && !stopWords[w] && !/^\d+$/.test(w)) {
-            freq[w] = (freq[w] || 0) + 1;
-          }
-        });
-        Object.keys(freq).sort(function (a, b) { return freq[b] - freq[a]; }).slice(0, 12).forEach(function (w) {
-          if (out.indexOf(w) === -1) out.push(w);
-        });
-        return out;
       }
 
       async function runSeoGeneration() {
@@ -2007,136 +1943,248 @@
         }
         var format = document.getElementById('select-video-format').value;
         var niche = document.getElementById('select-niche').value;
-        var tone = document.getElementById('select-tone').value;
-        var extraKw = document.getElementById('input-extra-keywords').value;
+        var extraKw = document.getElementById('input-extra-keywords').value.trim();
 
         var btn = document.getElementById('btn-generate-seo');
-        if (btn) btn.textContent = 'Fetching Live YouTube & AI Data...';
+        if (btn) btn.textContent = 'Fetching 100% Real Data from YouTube API...';
 
-        var effectiveTopic = rawInput;
-        var liveYtTags = [];
-        var liveYtHashes = [];
-        var liveYtTitles = [];
-        var liveContextMsg = '';
+        if (!apiState.youtubeKey) {
+          if (btn) {
+            btn.innerHTML = '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg><span>Generate Titles, Description &amp; Hashtags</span>';
+          }
+          showToast('API Key Domain Lock active or key missing.');
+          return;
+        }
 
-        // Step 1: Check if user pasted a YouTube URL directly into the Title box, or if we can query YouTube API for their topic!
-        var pastedVidId = extractYouTubeId(rawInput);
-        if (apiState.youtubeKey) {
-          try {
-            if (pastedVidId) {
-              var vResp = await fetch('https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&id=' + encodeURIComponent(pastedVidId) + '&key=' + encodeURIComponent(apiState.youtubeKey));
-              if (vResp.ok) {
-                var vData = await vResp.json();
-                if (vData.items && vData.items.length > 0) {
-                  var snip = vData.items[0].snippet || {};
-                  effectiveTopic = snip.title || rawInput;
-                  liveYtTags = (snip.tags || []).slice(0, 15);
-                  var descHashes = (snip.description || '').match(/#[A-Za-z0-9_]+/g) || [];
-                  var titleHashes = (snip.title || '').match(/#[A-Za-z0-9_]+/g) || [];
-                  liveYtHashes = titleHashes.concat(descHashes);
-                  if (liveYtTags.length === 0) {
-                    liveYtTags = extractKeywordsFromText(snip.title, snip.description);
-                  }
-                  liveContextMsg = 'Extracted from YouTube Video "' + effectiveTopic.slice(0, 55) + '..." by ' + (snip.channelTitle || 'Creator');
-                }
+        try {
+          var pastedVidId = extractYouTubeId(rawInput);
+          var videoItems = [];
+          var primaryVideo = null;
+          var nicheHint = nicheQueryLabels[niche] || niche;
+
+          // Step 1: If the user pasted a specific YouTube Video URL or 11-char ID, fetch that exact video first (1 quota unit)
+          if (pastedVidId) {
+            var singleResp = await fetch('https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics,contentDetails&id=' + encodeURIComponent(pastedVidId) + '&key=' + encodeURIComponent(apiState.youtubeKey));
+            if (singleResp.ok) {
+              var singleData = await singleResp.json();
+              if (singleData.items && singleData.items.length > 0) {
+                primaryVideo = singleData.items[0];
+                videoItems.push(primaryVideo);
               }
-            } else {
-              // Query YouTube search.list + videos.list to gather real ranking titles, tags, and hashtags on this topic
-              var sResp = await fetch('https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=5&q=' + encodeURIComponent(rawInput) + '&key=' + encodeURIComponent(apiState.youtubeKey));
-              if (sResp.ok) {
-                var sData = await sResp.json();
-                var ids = (sData.items || []).map(function (it) { return it.id && it.id.videoId; }).filter(Boolean);
-                if (ids.length > 0) {
-                  var dResp = await fetch('https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&id=' + encodeURIComponent(ids.join(',')) + '&key=' + encodeURIComponent(apiState.youtubeKey));
-                  if (dResp.ok) {
-                    var dData = await dResp.json();
-                    (dData.items || []).forEach(function (vItem) {
-                      var sn = vItem.snippet || {};
-                      if (sn.title) liveYtTitles.push(sn.title);
-                      (sn.tags || []).forEach(function (tg) {
-                        if (liveYtTags.indexOf(tg) === -1 && liveYtTags.length < 25) liveYtTags.push(tg);
-                      });
-                      var hMatches = ((sn.title || '') + ' ' + (sn.description || '')).match(/#[A-Za-z0-9_]+/g) || [];
-                      hMatches.forEach(function (hm) {
-                        if (liveYtHashes.indexOf(hm) === -1 && liveYtHashes.length < 15) liveYtHashes.push(hm);
-                      });
-                    });
-                    liveContextMsg = 'Analyzed ' + ids.length + ' live top-ranking YouTube videos & tag sets for "' + rawInput + '"';
-                  }
+            }
+          }
+
+          // Step 2: Build the live YouTube search query from the user's input (or primary video title) + selected category + optional keywords
+          var searchBase = primaryVideo ? (primaryVideo.snippet && primaryVideo.snippet.title ? primaryVideo.snippet.title : rawInput) : rawInput;
+          var searchQuery = searchBase;
+          if (!primaryVideo && nicheHint && searchQuery.toLowerCase().indexOf(niche.replace('-', ' ')) === -1) {
+            searchQuery = searchQuery + ' ' + nicheHint;
+          }
+          if (extraKw) {
+            searchQuery = searchQuery + ' ' + extraKw.split(',')[0].trim();
+          }
+          if (format === 'shorts' && searchQuery.toLowerCase().indexOf('shorts') === -1) {
+            searchQuery = searchQuery + ' #shorts';
+          }
+
+          var searchUrl = 'https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=10&q=' + encodeURIComponent(searchQuery) + '&key=' + encodeURIComponent(apiState.youtubeKey);
+          if (format === 'shorts') {
+            searchUrl += '&videoDuration=short';
+          }
+
+          var sResp = await fetch(searchUrl);
+          if (sResp.ok) {
+            var sData = await sResp.json();
+            var ids = [];
+            if (primaryVideo && primaryVideo.id) {
+              ids.push(primaryVideo.id);
+            }
+            (sData.items || []).forEach(function (it) {
+              var vid = it.id && it.id.videoId;
+              if (vid && ids.indexOf(vid) === -1 && ids.length < 10) {
+                ids.push(vid);
+              }
+            });
+
+            if (ids.length > 0) {
+              var detailsResp = await fetch('https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics,contentDetails&id=' + encodeURIComponent(ids.join(',')) + '&key=' + encodeURIComponent(apiState.youtubeKey));
+              if (detailsResp.ok) {
+                var detailsData = await detailsResp.json();
+                if (detailsData.items && detailsData.items.length > 0) {
+                  videoItems = detailsData.items;
                 }
               }
             }
-          } catch (e) {}
-        }
+          }
 
-        var mergedKw = extraKw;
-        if (liveYtTags.length > 0) {
-          mergedKw = (extraKw ? extraKw + ', ' : '') + liveYtTags.slice(0, 8).join(', ');
-        }
+          if (videoItems.length === 0) {
+            if (btn) {
+              btn.innerHTML = '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg><span>Generate Titles, Description &amp; Hashtags</span>';
+            }
+            showToast('No public YouTube videos found for that query. Try a broader topic or paste a valid YouTube URL.');
+            return;
+          }
 
-        var pack = buildBuiltInSeoPack(effectiveTopic, format, niche, tone, mergedKw);
+          // Step 3: Extract 100% REAL Titles, Views, Likes, Channels, Descriptions, Timestamps, Hashtags & Tags from the live YouTube videos
+          var realTitles = [];
+          var realHashtags = [];
+          var realTags = [];
+          var realTimestamps = [];
+          var totalViewsAnalyzed = 0;
 
-        // Merge real live YouTube hashtags & tags into the generated pack
-        if (liveYtHashes.length > 0) {
-          var combinedHashes = [];
-          liveYtHashes.concat(pack.hashtags).forEach(function (h) {
-            if (combinedHashes.indexOf(h) === -1 && combinedHashes.length < 15) combinedHashes.push(h);
+          videoItems.forEach(function (vItem) {
+            var sn = vItem.snippet || {};
+            var st = vItem.statistics || {};
+            var cd = vItem.contentDetails || {};
+            var vCount = st.viewCount ? Number(st.viewCount) : 0;
+            var lCount = st.likeCount ? Number(st.likeCount) : 0;
+            totalViewsAnalyzed += vCount;
+
+            var pubDate = sn.publishedAt ? new Date(sn.publishedAt).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' }) : '';
+            var durText = formatIsoDuration(cd.duration || '');
+
+            realTitles.push({
+              videoId: vItem.id,
+              text: sn.title || 'Untitled YouTube Video',
+              channel: sn.channelTitle || 'YouTube Creator',
+              viewsText: st.viewCount ? Number(st.viewCount).toLocaleString() + ' views' : 'Views hidden',
+              likesText: st.likeCount ? Number(st.likeCount).toLocaleString() + ' likes' : 'Likes hidden',
+              durationText: durText,
+              publishedText: pubDate
+            });
+
+            // Collect real uploader backend tags (snippet.tags)
+            (sn.tags || []).forEach(function (tg) {
+              var cleanTg = (tg || '').replace(/,/g, '').trim();
+              if (cleanTg && realTags.indexOf(cleanTg) === -1) {
+                realTags.push(cleanTg);
+              }
+            });
+
+            // Collect real hashtags (#...) used in the live video title or description
+            var hMatches = ((sn.title || '') + ' ' + (sn.description || '')).match(/#[A-Za-z0-9_]+/g) || [];
+            hMatches.forEach(function (hm) {
+              if (realHashtags.indexOf(hm) === -1 && realHashtags.length < 15) {
+                realHashtags.push(hm);
+              }
+            });
+
+            // Collect real timestamp lines (00:00 ...) from the live video description
+            var descLines = (sn.description || '').split('\n');
+            descLines.forEach(function (line) {
+              var trimmedLine = line.trim();
+              if (/^\d{1,2}:\d{2}(?::\d{2})?\s+.+/.test(trimmedLine) && realTimestamps.length < 10) {
+                if (realTimestamps.indexOf(trimmedLine) === -1) {
+                  realTimestamps.push(trimmedLine);
+                }
+              }
+            });
           });
-          pack.hashtags = combinedHashes;
-        }
 
-        if (liveYtTags.length > 0) {
+          // If the live videos did not include 15 explicit #hashtags, convert the top real uploader tags from those videos into #hashtags
+          if (realHashtags.length < 15) {
+            var sourceForHashes = realTags.length > 0
+              ? realTags
+              : extractKeywordsFromText(
+                  videoItems.map(function (v) { return (v.snippet && v.snippet.title) || ''; }).join(' '),
+                  videoItems.map(function (v) { return (v.snippet && v.snippet.description) || ''; }).join(' ')
+                );
+            sourceForHashes.forEach(function (kw) {
+              if (realHashtags.length >= 15) return;
+              var camel = '#' + kw.replace(/[^A-Za-z0-9\s]/g, '').trim().split(/\s+/).map(function (w) {
+                return w.charAt(0).toUpperCase() + w.slice(1).toLowerCase();
+              }).join('');
+              if (camel.length > 2 && realHashtags.indexOf(camel) === -1) {
+                realHashtags.push(camel);
+              }
+            });
+          }
+
+          // If the live videos had 0 hidden snippet.tags, extract the actual keywords from their real titles & descriptions
+          if (realTags.length === 0) {
+            realTags = extractKeywordsFromText(
+              videoItems.map(function (v) { return (v.snippet && v.snippet.title) || ''; }).join(' '),
+              videoItems.map(function (v) { return (v.snippet && v.snippet.description) || ''; }).join(' ')
+            );
+          }
+
+          // Pack real YouTube tags into the 500-character comma-separated limit
           var csvArr = [];
           var charTotal = 0;
-          liveYtTags.concat(pack.csvTags.split(', ')).forEach(function (t) {
+          realTags.forEach(function (t) {
             var cl = (t || '').replace(/,/g, '').trim();
             if (!cl || csvArr.indexOf(cl) !== -1) return;
             var cost = csvArr.length === 0 ? cl.length : cl.length + 2;
-            if (charTotal + cost <= 490) {
+            if (charTotal + cost <= 495) {
               csvArr.push(cl);
               charTotal += cost;
             }
           });
-          pack.csvTags = csvArr.join(', ');
-        }
 
-        var contextBar = document.getElementById('yt-live-context-bar');
-        var contextText = document.getElementById('yt-live-context-text');
-        var contextCount = document.getElementById('yt-live-tags-count');
-        if (contextBar && liveContextMsg) {
-          contextBar.classList.remove('hidden');
-          if (contextText) contextText.textContent = liveContextMsg;
-          if (contextCount) contextCount.textContent = liveYtTags.length + ' real YouTube tags merged';
-        }
+          // Build the Description Panel strictly from the REAL top YouTube video(s)
+          var leadVideo = primaryVideo || videoItems[0];
+          var leadSnip = (leadVideo && leadVideo.snippet) || {};
+          var leadStat = (leadVideo && leadVideo.statistics) || {};
+          var leadDesc = (leadSnip.description || '').trim();
 
-        // Also attempt Gemini AI refinement if a valid AI Studio key is configured
-        if (apiState.geminiKey && apiState.geminiKey.indexOf('AIza') === 0) {
-          try {
-            var endpoint = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=' + encodeURIComponent(apiState.geminiKey);
-            var promptText = 'Generate a JSON object for a YouTube video about "' + effectiveTopic + '" (Format: ' + format + ', Niche: ' + niche + ', Reference YouTube Titles: ' + liveYtTitles.join(' | ') + ', Keywords: ' + mergedKw + '). Return strictly valid JSON with keys: "titles" (array of 10 objects with "text" under 95 chars, "angle", "ctr"), "description" (string around 1400 chars with 00:00 timestamps), "hashtags" (array of 15 hashtags starting with #), and "csvTags" (comma-separated string under 480 chars).';
-            var resp = await fetch(endpoint, {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                contents: [{ parts: [{ text: promptText }] }],
-                generationConfig: { responseMimeType: 'application/json' }
-              })
-            });
-            if (resp.ok) {
-              var data = await resp.json();
-              var rawJson = data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts[0].text;
-              var parsed = JSON.parse(rawJson);
-              if (parsed && Array.isArray(parsed.titles) && parsed.description) {
-                pack = parsed;
-              }
+          var builtDescription = '';
+          if (leadDesc) {
+            builtDescription =
+              '=== ACTUAL YOUTUBE DESCRIPTION FROM TOP MATCHING VIDEO ===\n' +
+              'Video Title: ' + (leadSnip.title || '') + '\n' +
+              'Channel: ' + (leadSnip.channelTitle || '') + ' • Views: ' + (leadStat.viewCount ? Number(leadStat.viewCount).toLocaleString() : 'N/A') + ' • Likes: ' + (leadStat.likeCount ? Number(leadStat.likeCount).toLocaleString() : 'N/A') + '\n' +
+              'Watch URL: https://www.youtube.com/watch?v=' + (leadVideo.id || '') + '\n\n' +
+              leadDesc;
+          } else {
+            builtDescription =
+              'Top Live YouTube Video: ' + (leadSnip.title || '') + '\n' +
+              'Channel: ' + (leadSnip.channelTitle || '') + '\n' +
+              'Watch URL: https://www.youtube.com/watch?v=' + (leadVideo.id || '') + '\n\n' +
+              '(This video uploader left the description box empty on YouTube.)';
+          }
+
+          if (realTimestamps.length > 0 && leadDesc.indexOf(realTimestamps[0]) === -1) {
+            builtDescription += '\n\n=== REAL TIMESTAMPS DETECTED ACROSS TOP RANKING VIDEOS ===\n' + realTimestamps.join('\n');
+          }
+
+          if (realHashtags.length > 0) {
+            builtDescription += '\n\n=== REAL EXTRACTED YOUTUBE HASHTAGS ===\n' + realHashtags.join(' ');
+          }
+
+          // Cap at 5,000 bytes if multiple sections exceeded YouTube's byte ceiling
+          while (new Blob([builtDescription]).size > 4980 && builtDescription.length > 500) {
+            builtDescription = builtDescription.slice(0, builtDescription.length - 100).trim();
+          }
+
+          var contextBar = document.getElementById('yt-live-context-bar');
+          var contextText = document.getElementById('yt-live-context-text');
+          var contextCount = document.getElementById('yt-live-tags-count');
+          if (contextBar) {
+            contextBar.classList.remove('hidden');
+            if (contextText) {
+              contextText.textContent = 'Fetched ' + videoItems.length + ' real YouTube videos (' + totalViewsAnalyzed.toLocaleString() + ' combined views) for "' + searchQuery + '"';
             }
-          } catch (err) {}
-        }
+            if (contextCount) {
+              contextCount.textContent = realTags.length + ' real tags • ' + realHashtags.length + ' real hashtags';
+            }
+          }
 
-        if (btn) {
-          btn.innerHTML = '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg><span>Generate Titles, Description &amp; Hashtags</span>';
+          var pack = {
+            titles: realTitles,
+            description: builtDescription,
+            hashtags: realHashtags,
+            csvTags: csvArr.join(', ')
+          };
+
+          renderSeoPack(pack, searchQuery);
+          showToast('Fetched ' + videoItems.length + ' real YouTube videos, descriptions & tags!');
+        } catch (err) {
+          showToast('Error communicating with YouTube Data API v3. Check network or API quota.');
+        } finally {
+          if (btn) {
+            btn.innerHTML = '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg><span>Generate Titles, Description &amp; Hashtags</span>';
+          }
         }
-        renderSeoPack(pack, effectiveTopic);
       }
 
       var genForm = document.getElementById('generator-form');
@@ -2144,7 +2192,6 @@
         genForm.addEventListener('submit', function (e) {
           e.preventDefault();
           runSeoGeneration();
-          showToast('Generated 10 Titles, SEO Description & 15 Hashtags!');
         });
       }
 
@@ -2688,10 +2735,10 @@
 
       function updateApiStatusBadge() {
         var note = document.getElementById('generator-engine-note');
-        if (apiState.geminiKey) {
-          if (note) note.textContent = 'Live AI Engine Active (YouTube SEO Optimized)';
+        if (apiState.youtubeKey) {
+          if (note) note.textContent = '100% Live YouTube Data API v3 Active (Real Titles, Views, Descriptions & Tags)';
         } else {
-          if (note) note.textContent = 'YouTube SEO Formula Engine Active';
+          if (note) note.textContent = 'API Key Locked to raretoolsarea.online';
         }
       }
 
