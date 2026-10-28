@@ -1664,7 +1664,7 @@
         studio: {
           title: 'Rare Tool Area — Free AI YouTube Title, Description & Hashtag Generator | By Nisar Khan',
           desc: 'Generate 10 high-CTR YouTube titles under 100 characters, 5,000-byte SEO descriptions with timestamps, 15 trending hashtags, and 500-char tag packs on raretoolsarea.online.',
-          url: 'https://raretoolsarea.online/'
+          url: (window.location && window.location.search && window.location.search.indexOf('page=studio') !== -1) ? 'https://raretoolsarea.online/?page=studio' : 'https://raretoolsarea.online/'
         },
         inspector: {
           title: 'YouTube Video URL Metadata & Tag Inspector (videos.list API) | Rare Tool Area',
@@ -3244,15 +3244,10 @@
 
       // Handle Initial URL Query (?page=...) or Hash (#...) Deep-Linking & Search/AdSense Bot Full-DOM Unfolding
       function initSeoRouterAndCrawlerSupport() {
-        var ua = (navigator.userAgent || '');
-        var isSearchOrAdBot = /(Googlebot|Mediapartners-Google|AdsBot-Google|bingbot|DuckDuckBot|Baiduspider|YandexBot|Slurp)/i.test(ua);
-        if (isSearchOrAdBot) {
-          // Expose all sections and legal tabs simultaneously when crawled by Googlebot or Mediapartners-Google (AdSense)
-          document.querySelectorAll('.page-view, .legal-panel, .faq-body').forEach(function (el) {
-            el.classList.remove('hidden');
-          });
-          return;
-        }
+        // Always expose all sections, legal panels, and FAQ answers for both users and crawlers
+        document.querySelectorAll('.page-view, .legal-panel, .faq-body').forEach(function (el) {
+          el.classList.remove('hidden');
+        });
 
         var params = null;
         var pageParam = '';
@@ -3265,10 +3260,29 @@
           pageParam = window.location.hash.replace(/^#\/?/, '').replace(/^view-/, '').toLowerCase().trim();
         }
 
+        if (!pageParam) {
+          updateSeoHeadForRoute('studio', true);
+          return;
+        }
+
+        var targetSectionId = (pageParam === 'privacy' || pageParam === 'terms' || pageParam === 'disclaimer')
+          ? 'view-legal'
+          : ('view-' + pageParam);
+
+        // When accessed via a specific ?page= URL (by Googlebot or a visitor), promote that section to the top of <main>
+        // so each ?page= URL has unique above-the-fold content, unique <title>, and its own self-referencing canonical URL
+        var mainEl = document.querySelector('main');
+        var targetSec = document.getElementById(targetSectionId);
+        if (mainEl && targetSec && targetSectionId !== 'view-studio') {
+          targetSec.classList.remove('pt-8', 'border-t-2', 'border-slate-200/80');
+          mainEl.insertBefore(targetSec, mainEl.firstChild);
+        }
+
         if (pageParam === 'privacy' || pageParam === 'terms' || pageParam === 'disclaimer') {
-          switchView('legal', pageParam, true);
+          updateSeoHeadForRoute(pageParam, true);
           selectLegalTab(pageParam);
         } else if (views.indexOf(pageParam) !== -1) {
+          updateSeoHeadForRoute(pageParam, true);
           switchView(pageParam, pageParam, true);
         }
       }
