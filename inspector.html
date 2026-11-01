@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="google-site-verification" content="1HEdtpB5Jm-E0-TvuPck05pRVcc2oNOl4HxeIryUTAw" />
+  <title>YouTube Video URL Metadata & Tag Inspector (videos.list API) | Rare Tool Area</title>
+  <link rel="icon" type="image/png" sizes="48x48" href="https://res.cloudinary.com/dtx8hi2qz/image/upload/w_48,h_48,c_fill,f_png/v1792677680/background_must_be_transparent._20261022190107_j6uoz6.jpg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="https://res.cloudinary.com/dtx8hi2qz/image/upload/w_192,h_192,c_fill,f_png/v1792677680/background_must_be_transparent._20261022190107_j6uoz6.jpg" />
+  <link rel="shortcut icon" type="image/png" href="https://res.cloudinary.com/dtx8hi2qz/image/upload/w_192,h_192,c_fill,f_png/v1792677680/background_must_be_transparent._20261022190107_j6uoz6.jpg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://res.cloudinary.com/dtx8hi2qz/image/upload/w_180,h_180,c_fill,f_png/v1792677680/background_must_be_transparent._20261022190107_j6uoz6.jpg" />
+  <meta name="description" content="Inspect any YouTube video URL to audit its exact title length, UTF-8 byte count, chapter timestamps, live view/like statistics, and backend tags on raretoolsarea.online." />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="author" content="Nisar Khan" />
+  <link rel="canonical" href="https://raretoolsarea.online/inspector.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Rare Tool Area" />
+  <meta property="og:title" content="YouTube Video URL Metadata & Tag Inspector (videos.list API) | Rare Tool Area" />
+  <meta property="og:description" content="Inspect any YouTube video URL to audit its exact title length, UTF-8 byte count, chapter timestamps, live view/like statistics, and backend tags on raretoolsarea.online." />
+  <meta property="og:url" content="https://raretoolsarea.online/inspector.html" />
+  <meta property="og:image" content="https://res.cloudinary.com/dtx8hi2qz/image/upload/v1792677680/background_must_be_transparent._20261022190107_j6uoz6.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="YouTube Video URL Metadata & Tag Inspector (videos.list API) | Rare Tool Area" />
+  <meta name="twitter:description" content="Inspect any YouTube video URL to audit its exact title length, UTF-8 byte count, chapter timestamps, live view/like statistics, and backend tags on raretoolsarea.online." />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://raretoolsarea.online/#website",
+        "url": "https://raretoolsarea.online/",
+        "name": "Rare Tool Area",
+        "alternateName": ["Rare Tools Area", "raretoolsarea.online"],
+        "publisher": { "@id": "https://raretoolsarea.online/#founder" },
+        "inLanguage": "en"
+      },
+      {
+        "@type": "WebApplication",
+        "@id": "https://raretoolsarea.online/inspector.html#webpage",
+        "url": "https://raretoolsarea.online/inspector.html",
+        "name": "YouTube Video URL Metadata & Tag Inspector (videos.list API) | Rare Tool Area",
+        "description": "Inspect any YouTube video URL to audit its exact title length, UTF-8 byte count, chapter timestamps, live view/like statistics, and backend tags on raretoolsarea.online.",
+        "isPartOf": { "@id": "https://raretoolsarea.online/#website" },
+        "author": { "@id": "https://raretoolsarea.online/#founder" }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://raretoolsarea.online/#founder",
+        "name": "Nisar Khan",
+        "jobTitle": "Founder & Lead Developer",
+        "email": "mailto:rareyt911@gmail.com",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Islamabad",
+          "addressCountry": "PK"
+        },
+        "url": "https://raretoolsarea.online/about.html"
+      }
+    ]
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#eef2ff',
+              100: '#e0e7ff',
+              500: '#6366f1',
+              600: '#4f46e5',
+              700: '#4338ca',
+              900: '#1e1b4b',
+            }
+          }
+        }
+      }
+    };
+  </script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      analytics_storage: 'denied'
+    });
+    window.adsbygoogle = window.adsbygoogle || [];
+    window.adsbygoogle.requestNonPersonalizedAds = 1;
+  </script>
+  <!-- GOOGLE ADSENSE VERIFICATION & AUTO ADS SCRIPT (Publisher ID: ca-pub-9629708945764067) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9629708945764067"
+     crossorigin="anonymous"></script>
+  <style>
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col selection:bg-indigo-600 selection:text-white">
+
+  <!-- Main Sticky Header Navigation -->
+  <header class="bg-white/95 backdrop-blur border-b border-slate-200 sticky top-0 z-30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="index.html" class="flex items-center gap-3 text-left group focus:outline-none">
+          <img src="https://res.cloudinary.com/dtx8hi2qz/image/upload/w_96,h_96,c_fill,f_png/v1792677680/background_must_be_transparent._20261022190107_j6uoz6.jpg" alt="Rare Tool Area" class="w-10 h-10 rounded-xl object-contain bg-white shadow-sm group-hover:scale-105 transition max-w-full h-auto" />
+          <div>
+            <span class="block text-base sm:text-lg font-extrabold tracking-tight text-slate-900">Rare Tool Area</span>
+            <span class="block text-[11px] font-medium text-slate-500">YouTube AI &amp; Creator SEO Suite</span>
+          </div>
+        </a>
+
+        <nav class="hidden lg:flex items-center gap-1" aria-label="Main Navigation">
+          <a href="index.html" class="px-3.5 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition">AI Title & Tag Studio</a>
+          <a href="inspector.html" class="px-3.5 py-2 rounded-lg text-sm font-semibold bg-indigo-50 text-indigo-700 transition">URL Metadata Inspector</a>
+          <a href="calculator.html" class="px-3.5 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition">RPM & Earnings Calculator</a>
+          <a href="guides.html" class="px-3.5 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition">SEO Guides & Blog</a>
+          <a href="about.html" class="px-3.5 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition">About Us</a>
+          <a href="privacy.html" class="px-3.5 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition">Privacy & Policies</a>
+          <a href="contact.html" class="px-3.5 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition">Contact</a>
+        </nav>
+
+        <div class="flex items-center gap-2">
+          <button type="button" id="btn-mobile-menu" class="lg:hidden inline-flex items-center justify-center p-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100" aria-label="Toggle Menu">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="mobile-nav-drawer" class="hidden lg:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-4 space-y-1">
+      <a href="index.html" class="block w-full text-left px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-100">AI Title & Tag Studio</a>
+      <a href="inspector.html" class="block w-full text-left px-3 py-2 rounded-lg text-sm font-semibold bg-indigo-50 text-indigo-700">URL Metadata Inspector</a>
+      <a href="calculator.html" class="block w-full text-left px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-100">RPM & Earnings Calculator</a>
+      <a href="guides.html" class="block w-full text-left px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-100">SEO Guides & Blog</a>
+      <a href="about.html" class="block w-full text-left px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-100">About Us</a>
+      <a href="privacy.html" class="block w-full text-left px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-100">Privacy & Policies</a>
+      <a href="contact.html" class="block w-full text-left px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-100">Contact</a>
+    </div>
+  </header>
+  <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+<section id="view-inspector" class="page-view scroll-mt-20 space-y-8 ">
+      <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8 space-y-6">
+        <div class="border-b border-slate-200 pb-4 flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-rose-600">Quota-Safe Endpoint (videos.list = 1 Unit)</span>
+            <h1 class="text-2xl font-extrabold text-slate-900 mt-1">YouTube Video URL Metadata &amp; Tag Inspector</h1>
+            <p class="text-sm text-slate-600 mt-1">
+              Inspect any YouTube video's title length, description structure, hashtags, and backend tags. Enter any YouTube video URL below to inspect its title character length, description structure, chapter timestamps, and backend tags.
+            </p>
+          </div>
+        </div>
+
+        <form id="inspector-form" class="flex flex-col sm:flex-row gap-3">
+          <input
+            id="input-inspect-url"
+            type="text"
+            required
+            value=""
+            placeholder="Paste a YouTube video URL or Video ID here..."
+            class="flex-grow rounded-xl border border-slate-300 px-4 py-3 text-sm text-slate-900 focus:border-indigo-600 outline-none"
+          />
+          <button type="submit" class="px-6 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-sm shrink-0 transition">
+            Inspect Video Metadata
+          </button>
+        </form>
+
+        <!-- Inspector Result Card (Shows 100% Real Live YouTube Video Data) -->
+        <div id="inspector-result-card" class="hidden bg-slate-50 rounded-2xl border border-slate-200 p-6 space-y-6">
+          <!-- Top Video Info + Thumbnail -->
+          <div class="flex flex-col md:flex-row items-start gap-5 border-b border-slate-200 pb-5">
+            <img id="inspect-out-thumb" src="https://res.cloudinary.com/dtx8hi2qz/image/upload/v1792677680/background_must_be_transparent._20261022190107_j6uoz6.jpg" alt="Video Thumbnail" class="w-full md:w-56 rounded-xl border border-slate-200 object-cover shadow-sm max-w-full h-auto" />
+            <div class="flex-grow space-y-2">
+              <div class="flex flex-wrap items-center justify-between gap-2">
+                <span id="inspect-out-channel" class="text-xs font-bold text-indigo-600 uppercase">Channel: —</span>
+                <span id="inspect-out-score" class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800">SEO Score: —</span>
+              </div>
+              <h2 id="inspect-out-title" class="text-lg sm:text-xl font-extrabold text-slate-900 leading-snug"></h2>
+              <div class="flex flex-wrap items-center gap-3 text-xs text-slate-500 pt-1">
+                <span id="inspect-out-published">Published: —</span>
+                <span>•</span>
+                <span id="inspect-out-title-len" class="font-semibold text-slate-700">0 / 100 chars</span>
+                <span>•</span>
+                <span id="inspect-out-desc-len" class="font-semibold text-slate-700">0 / 5,000 B</span>
+              </div>
+              <div class="pt-2 flex flex-wrap gap-2">
+                <button type="button" id="btn-inspect-copy-title" class="px-3 py-1.5 rounded-lg bg-white border border-slate-300 hover:bg-slate-100 text-xs font-semibold text-slate-700 transition">
+                  Copy Video Title
+                </button>
+                <button type="button" id="btn-inspect-send-to-studio" class="px-3.5 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-xs font-bold text-white transition">
+                  Generate AI Titles, Description &amp; Tags from This Video →
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4 Live YouTube Statistics Cards -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            <div class="bg-white p-3.5 rounded-xl border border-slate-200">
+              <span class="text-[11px] text-slate-500 block">Actual Total Views</span>
+              <strong id="inspect-out-views" class="text-base sm:text-lg font-extrabold text-slate-900">—</strong>
+            </div>
+            <div class="bg-white p-3.5 rounded-xl border border-slate-200">
+              <span class="text-[11px] text-slate-500 block">Actual Likes</span>
+              <strong id="inspect-out-likes" class="text-base sm:text-lg font-extrabold text-emerald-700">—</strong>
+            </div>
+            <div class="bg-white p-3.5 rounded-xl border border-slate-200">
+              <span class="text-[11px] text-slate-500 block">Actual Comments</span>
+              <strong id="inspect-out-comments" class="text-base sm:text-lg font-extrabold text-indigo-600">—</strong>
+            </div>
+            <div class="bg-white p-3.5 rounded-xl border border-slate-200">
+              <span class="text-[11px] text-slate-500 block">Chapter Timestamps</span>
+              <strong id="inspect-out-chapters" class="text-base sm:text-lg font-extrabold text-slate-900">—</strong>
+            </div>
+          </div>
+
+          <!-- Full Actual Video Description Box -->
+          <div class="space-y-2">
+            <div class="flex items-center justify-between">
+              <h3 class="text-xs font-bold uppercase tracking-wider text-slate-600">Actual Video Description (From YouTube)</h3>
+              <button type="button" id="btn-inspect-copy-desc" class="text-xs font-semibold text-indigo-600 hover:text-indigo-800">
+                Copy Full Description
+              </button>
+            </div>
+            <textarea
+              id="inspect-out-desc-text"
+              rows="8"
+              readonly
+              class="w-full rounded-xl border border-slate-300 p-3.5 font-mono text-xs text-slate-800 bg-white leading-relaxed"
+            ></textarea>
+          </div>
+
+          <!-- Extracted Backend Tags, Hashtags & SEO Keywords -->
+          <div class="space-y-2">
+            <div class="flex items-center justify-between">
+              <h3 id="inspect-tags-heading" class="text-xs font-bold uppercase tracking-wider text-slate-600">Extracted Video Tags, Hashtags &amp; Keywords</h3>
+              <button type="button" id="btn-inspect-copy-tags" class="text-xs font-semibold text-indigo-600 hover:text-indigo-800">
+                Copy All Tags &amp; Keywords
+              </button>
+            </div>
+            <div id="inspect-out-tags" class="flex flex-wrap gap-1.5"></div>
+          </div>
+
+          <div class="bg-white rounded-xl border border-slate-200 p-4">
+            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-600 mb-1.5">Actionable SEO Audit Notes</h3>
+            <p id="inspect-out-notes" class="text-xs sm:text-sm text-slate-700 leading-relaxed"></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Static Educational Guide for Inspector Page -->
+      <article class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8 space-y-4">
+        <h2 class="text-xl font-bold text-slate-900">Why Rare Tool Area Uses `videos.list` Instead of `search.list` for Quota Protection</h2>
+        <p class="text-sm text-slate-700 leading-relaxed">
+          Under Google's official YouTube Data API v3 quota rules, every Google Cloud project receives a default daily allocation of <strong>100 `search.list` calls</strong>, <strong>100 `videos.insert` calls</strong>, and <strong>10,000 general quota units</strong> for read endpoints. Because `videos.list` costs only <strong>1 unit per request</strong>, inspecting video URLs directly lets your website serve up to 10,000 lookups every single day at zero cost without hitting `403 quotaExceeded` errors.
+        </p>
+      </article>
+    
+      <article class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-10 space-y-6 text-sm text-slate-700 leading-relaxed">
+        <div class="border-b border-slate-200 pb-5">
+          <span class="text-xs font-bold uppercase tracking-wider text-rose-600">Technical Documentation &amp; SEO Audit Methodology</span>
+          <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 mt-1">
+            How to Audit Any YouTube Video's Metadata, Chapter Timestamps &amp; Backend Tags Using Official API Standards
+          </h2>
+          <p class="mt-2 text-slate-600">
+            By <strong>Nisar Khan</strong>, Founder &amp; Lead Developer at Rare Tool Area (Islamabad, Pakistan) • Updated November 2026
+          </p>
+        </div>
+
+        <h3 class="text-base font-bold text-slate-900">1. Why Auditing Live Competitor Metadata Matters Before You Publish</h3>
+        <p>
+          Before filming or uploading a new video, top creators inspect the top 5 ranking videos for their target keyword. However, YouTube's standard watch page hides several critical ranking signals from plain sight: you cannot immediately see the exact character count of the title, the UTF-8 byte size of the description, or the hidden <code>snippet.tags</code> array stored in the video's backend metadata.
+        </p>
+        <p>
+          Our <strong>YouTube Video URL Metadata &amp; Tag Inspector</strong> queries the official YouTube Data API v3 <code>videos.list</code> endpoint (`part=snippet,statistics,contentDetails`) to retrieve the exact JSON payload stored on YouTube's servers for any public 11-character Video ID.
+        </p>
+
+        <div class="overflow-x-auto my-4">
+          <table class="min-w-full text-left border border-slate-200 rounded-xl overflow-hidden text-xs sm:text-sm">
+            <thead class="bg-slate-100 text-slate-800 font-bold">
+              <tr>
+                <th class="p-3 border-b border-slate-200">API Property Inspected</th>
+                <th class="p-3 border-b border-slate-200">Official YouTube Limit</th>
+                <th class="p-3 border-b border-slate-200">What Our Inspector Checks</th>
+                <th class="p-3 border-b border-slate-200">Actionable SEO Takeaway</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-200 bg-white">
+              <tr>
+                <td class="p-3 font-semibold text-slate-900"><code>snippet.title</code></td>
+                <td class="p-3">100 Characters</td>
+                <td class="p-3">Exact character count, mobile truncation point (65 chars), and power-hook placement.</td>
+                <td class="p-3">Keep your title between 52 and 68 characters so mobile viewers never see an ellipsis (<code>...</code>).</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-semibold text-slate-900"><code>snippet.description</code></td>
+                <td class="p-3">5,000 UTF-8 Bytes</td>
+                <td class="p-3">Exact byte length, above-the-fold 150-char snippet, and ascending <code>00:00</code> chapters.</td>
+                <td class="p-3">Include at least 4 ascending timestamps spaced 10+ seconds apart to win Google Search Key Moments.</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-semibold text-slate-900"><code>snippet.tags</code></td>
+                <td class="p-3">500 Characters Total</td>
+                <td class="p-3">Extracts all hidden uploader backend tags and inline <code>#hashtags</code>.</td>
+                <td class="p-3">Use 400–480 characters of long-tail phrasing variations and common topic synonyms.</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-semibold text-slate-900"><code>statistics</code></td>
+                <td class="p-3">Real-Time Counters</td>
+                <td class="p-3">Live <code>viewCount</code>, <code>likeCount</code>, and <code>commentCount</code> ratios.</td>
+                <td class="p-3">A like-to-view ratio above 3.5% signals strong viewer satisfaction to YouTube's recommendation engine.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 class="text-base font-bold text-slate-900">2. How to Use Extracted Tags &amp; Chapters Ethically</h3>
+        <p>
+          Never copy another creator's brand name, channel name, or unrelated trending tags into your own video—doing so violates YouTube's misleading metadata policy. Instead, look for the <strong>topical intersection</strong> across 3 to 5 top-performing videos in your niche:
+        </p>
+        <ul class="list-disc pl-5 space-y-1.5">
+          <li><strong>Identify Shared Root Phrases:</strong> If three top tutorials on a topic all include a specific technical term in their first 50 characters and first description line, make sure your script and description address that exact sub-topic thoroughly.</li>
+          <li><strong>Spot Missing Chapter Gaps:</strong> Inspect the chapter timestamps (`00:00`, `02:15`, `05:40`) of competing videos. If viewers in the comments ask about a step the original uploader skipped, add a dedicated chapter for that step in your video.</li>
+          <li><strong>One-Click Studio Transfer:</strong> After inspecting any URL above, click <strong>"Generate AI Titles, Description &amp; Tags from This Video →"</strong> to send the topic and top keywords directly into our <a href="index.html" class="text-indigo-600 font-semibold underline">AI Title &amp; Tag Studio</a>.</li>
+        </ul>
+      </article>
+
+    </section>
+
+    <!-- ========================================== -->
+  </main>
+  <!-- ========================================== -->
+  <!-- FOOTER WITH REAL MULTI-PAGE LINKS          -->
+  <!-- ========================================== -->
+  <footer class="bg-slate-900 text-slate-400 border-t border-slate-800 mt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div class="space-y-3">
+          <a href="index.html" class="flex items-center gap-2.5">
+            <img src="https://res.cloudinary.com/dtx8hi2qz/image/upload/w_96,h_96,c_fill,f_png/v1792677680/background_must_be_transparent._20261022190107_j6uoz6.jpg" alt="Rare Tool Area" class="w-8 h-8 rounded-lg object-contain bg-white max-w-full h-auto" />
+            <span class="text-white font-extrabold text-base">Rare Tool Area</span>
+          </a>
+          <p class="text-xs leading-relaxed text-slate-400">
+            Free AI-powered YouTube title, description, and hashtag generators built with strict quota-safe architecture and original creator SEO documentation.
+          </p>
+          <p class="text-xs text-slate-500">
+            Founded &amp; Developed by <strong class="text-slate-300">Nisar Khan</strong><br />
+            Islamabad, Pakistan • <a href="mailto:rareyt911@gmail.com" class="text-indigo-400 hover:underline">rareyt911@gmail.com</a>
+          </p>
+        </div>
+
+        <div>
+          <h3 class="text-xs font-bold uppercase tracking-wider text-white mb-3">Creator SEO Tools</h3>
+          <ul class="space-y-2 text-xs">
+            <li><a href="index.html" class="hover:text-white transition">AI YouTube Title &amp; Tag Studio</a></li>
+            <li><a href="inspector.html" class="hover:text-white transition">YouTube URL Metadata Inspector</a></li>
+            <li><a href="calculator.html" class="hover:text-white transition">Creator RPM &amp; Revenue Calculator</a></li>
+            <li><a href="guides.html" class="hover:text-white transition">Creator SEO Knowledge Base</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="text-xs font-bold uppercase tracking-wider text-white mb-3">Editorial Guides</h3>
+          <ul class="space-y-2 text-xs">
+            <li><a href="guide-youtube-title-ctr.html" class="hover:text-white transition">100-Char YouTube Title Formula</a></li>
+            <li><a href="guide-youtube-description-seo.html" class="hover:text-white transition">5,000-Byte Description Blueprint</a></li>
+            <li><a href="guide-youtube-api-quota.html" class="hover:text-white transition">YouTube API v3 Quota Guide</a></li>
+            <li><a href="guide-evergreen-youtube-rpm.html" class="hover:text-white transition">Evergreen Video &amp; YPP RPM Guide</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="text-xs font-bold uppercase tracking-wider text-white mb-3">Trust &amp; Legal Pages</h3>
+          <ul class="space-y-2 text-xs">
+            <li><a href="about.html" class="hover:text-white transition">About Rare Tool Area (Nisar Khan)</a></li>
+            <li><a href="privacy.html" class="hover:text-white transition">Privacy Policy &amp; Cookie Notice</a></li>
+            <li><a href="terms.html" class="hover:text-white transition">Terms of Service</a></li>
+            <li><a href="disclaimer.html" class="hover:text-white transition">Earnings &amp; SEO Disclaimer</a></li>
+            <li><a href="contact.html" class="hover:text-white transition">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <nav aria-label="Complete Site Directory" class="pt-6 border-t border-slate-800">
+        <div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-[11px] text-slate-400">
+          <span class="font-bold uppercase tracking-wider text-slate-300">All Official Pages:</span>
+          <a href="https://raretoolsarea.online/" class="hover:text-white underline">Home (AI Studio)</a>
+          <a href="https://raretoolsarea.online/inspector.html" class="hover:text-white underline">URL Metadata Inspector</a>
+          <a href="https://raretoolsarea.online/calculator.html" class="hover:text-white underline">YPP Revenue Calculator</a>
+          <a href="https://raretoolsarea.online/guides.html" class="hover:text-white underline">SEO Knowledge Base</a>
+          <a href="https://raretoolsarea.online/guide-youtube-title-ctr.html" class="hover:text-white underline">Title CTR Guide</a>
+          <a href="https://raretoolsarea.online/guide-youtube-description-seo.html" class="hover:text-white underline">Description Chapters Guide</a>
+          <a href="https://raretoolsarea.online/guide-youtube-api-quota.html" class="hover:text-white underline">API Quota Architecture</a>
+          <a href="https://raretoolsarea.online/guide-evergreen-youtube-rpm.html" class="hover:text-white underline">Evergreen RPM Guide</a>
+          <a href="https://raretoolsarea.online/about.html" class="hover:text-white underline">About Nisar Khan</a>
+          <a href="https://raretoolsarea.online/privacy.html" class="hover:text-white underline">Privacy Policy</a>
+          <a href="https://raretoolsarea.online/terms.html" class="hover:text-white underline">Terms of Service</a>
+          <a href="https://raretoolsarea.online/disclaimer.html" class="hover:text-white underline">Disclaimer</a>
+          <a href="https://raretoolsarea.online/contact.html" class="hover:text-white underline">Contact Us</a>
+        </div>
+      </nav>
+
+      <div class="pt-6 border-t border-slate-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs text-slate-500">
+        <p>
+          © 2026 <strong class="text-slate-300">Rare Tool Area</strong> (<a href="https://raretoolsarea.online" class="text-indigo-400 hover:underline">raretoolsarea.online</a>). Built by Nisar Khan (Islamabad, Pakistan). All rights reserved.
+        </p>
+        <p class="max-w-xl text-[11px] text-slate-400">
+          We use cookies to improve your experience, remember your preferences, and deliver relevant content (<span id="footer-cookie-status-text" class="text-slate-400">Cookies not yet set</span>). <button type="button" id="btn-open-cookie-settings" class="text-indigo-400 underline font-semibold hover:text-indigo-300">Cookie Preferences</button> • <a href="privacy.html" class="text-indigo-400 underline">Privacy Policy</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Cookie Consent Banner -->
+  <div id="cookie-consent-banner" class="fixed bottom-0 inset-x-0 z-40 hidden p-3 sm:p-4 pointer-events-none">
+    <div class="max-w-5xl mx-auto bg-slate-900/95 backdrop-blur text-white rounded-2xl shadow-2xl border border-slate-700 p-4 sm:p-5 pointer-events-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+      <div class="space-y-1 text-xs sm:text-sm">
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-indigo-400"></span>
+          <strong class="font-bold text-white">We value your privacy</strong>
+        </div>
+        <p class="text-xs text-slate-300 leading-relaxed max-w-2xl">
+          We use cookies and similar technologies to enhance your browsing experience, remember your preferences, analyze site traffic, and personalize content and recommendations. See our <a href="privacy.html" class="text-indigo-300 underline">Privacy Policy</a> for details.
+        </p>
+      </div>
+      <div class="flex flex-wrap items-center gap-2 shrink-0 w-full md:w-auto justify-end">
+        <button type="button" id="btn-cookie-essential" class="px-3.5 py-2 rounded-xl border border-slate-600 hover:bg-slate-800 text-slate-300 text-xs font-semibold transition">
+          Essential Only
+        </button>
+        <button type="button" id="btn-cookie-accept-all" class="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold shadow-md transition">
+          Accept All
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast-notification" class="fixed bottom-5 right-5 z-50 hidden bg-slate-900 text-white px-4 py-3 rounded-xl shadow-xl border border-slate-700 text-xs font-semibold flex items-center gap-2">
+    <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+    <span id="toast-message">Copied to clipboard!</span>
+  </div>
+
+  <script>
+    (function () {
+      var mobileMenuBtn = document.getElementById('btn-mobile-menu');
+      if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', function () {
+          var drawer = document.getElementById('mobile-nav-drawer');
+          if (drawer) drawer.classList.toggle('hidden');
+        });
+      }
+
+      document.querySelectorAll('.faq-toggle').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var body = btn.nextElementSibling;
+          var icon = btn.querySelector('.faq-icon');
+          if (body) {
+            var isHidden = body.classList.contains('hidden');
+            if (isHidden) {
+              body.classList.remove('hidden');
+              if (icon) icon.textContent = '−';
+            } else {
+              body.classList.add('hidden');
+              if (icon) icon.textContent = '+';
+            }
+          }
+        });
+      });
+
+      function setRealCookie(name, value, days) {
+        try {
+          var expires = '';
+          if (days) {
+            var d = new Date();
+            d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
+            expires = '; expires=' + d.toUTCString();
+          }
+          document.cookie = name + '=' + encodeURIComponent(value || '') + expires + '; path=/; SameSite=Lax';
+        } catch (e) {}
+      }
+
+      function getRealCookie(name) {
+        try {
+          var nameEQ = name + '=';
+          var ca = document.cookie ? document.cookie.split(';') : [];
+          for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+            if (c.indexOf(nameEQ) === 0) return decodeURIComponent(c.substring(nameEQ.length, c.length));
+          }
+        } catch (e) {}
+        return null;
+      }
+
+      function updateFooterConsentStatus(consentType) {
+        var statusEl = document.getElementById('footer-cookie-status-text');
+        if (!statusEl) return;
+        if (consentType === 'personalized') {
+          statusEl.textContent = 'All Cookies Accepted';
+          statusEl.className = 'text-emerald-400';
+        } else if (consentType === 'essential') {
+          statusEl.textContent = 'Essential Cookies Only';
+          statusEl.className = 'text-amber-400';
+        } else {
+          statusEl.textContent = 'Cookies not yet set';
+          statusEl.className = 'text-slate-400';
+        }
+      }
+
+      function applyConsent(consentType) {
+        var isPersonalized = (consentType === 'personalized');
+        setRealCookie('rta_cookie_consent', isPersonalized ? 'personalized' : 'essential', 365);
+        try { localStorage.setItem('rta_cookie_consent', isPersonalized ? 'personalized' : 'essential'); } catch (e) {}
+        if (typeof gtag === 'function') {
+          gtag('consent', 'update', {
+            ad_storage: isPersonalized ? 'granted' : 'denied',
+            ad_user_data: isPersonalized ? 'granted' : 'denied',
+            ad_personalization: isPersonalized ? 'granted' : 'denied',
+            analytics_storage: isPersonalized ? 'granted' : 'denied'
+          });
+        }
+        window.adsbygoogle = window.adsbygoogle || [];
+        window.adsbygoogle.requestNonPersonalizedAds = isPersonalized ? 0 : 1;
+        updateFooterConsentStatus(isPersonalized ? 'personalized' : 'essential');
+      }
+
+      var cookieBanner = document.getElementById('cookie-consent-banner');
+      var existing = getRealCookie('rta_cookie_consent');
+      if (!existing) {
+        try { existing = localStorage.getItem('rta_cookie_consent'); } catch (e) {}
+      }
+      if (existing === 'personalized' || existing === 'essential') {
+        applyConsent(existing);
+      } else {
+        updateFooterConsentStatus(null);
+        if (cookieBanner) cookieBanner.classList.remove('hidden');
+      }
+
+      var btnAccept = document.getElementById('btn-cookie-accept-all');
+      if (btnAccept) {
+        btnAccept.addEventListener('click', function () {
+          applyConsent('personalized');
+          if (cookieBanner) cookieBanner.classList.add('hidden');
+        });
+      }
+      var btnEssential = document.getElementById('btn-cookie-essential');
+      if (btnEssential) {
+        btnEssential.addEventListener('click', function () {
+          applyConsent('essential');
+          if (cookieBanner) cookieBanner.classList.add('hidden');
+        });
+      }
+      var btnOpenCookie = document.getElementById('btn-open-cookie-settings');
+      if (btnOpenCookie) {
+        btnOpenCookie.addEventListener('click', function () {
+          if (cookieBanner) cookieBanner.classList.remove('hidden');
+        });
+      }
+
+      // Backward-compatible redirect if someone visits an old ?page= bookmark
+      try {
+        var params = new URLSearchParams(window.location.search || '');
+        var p = (params.get('page') || '').toLowerCase().trim();
+        var map = {
+          inspector: 'inspector.html',
+          calculator: 'calculator.html',
+          guides: 'guides.html',
+          about: 'about.html',
+          privacy: 'privacy.html',
+          legal: 'privacy.html',
+          terms: 'terms.html',
+          disclaimer: 'disclaimer.html',
+          contact: 'contact.html'
+        };
+        if (map[p] && window.location.pathname.indexOf(map[p]) === -1) {
+          window.location.replace(map[p]);
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <script>
+    (function () {
+
+      var ALLOWED_PRODUCTION_DOMAIN = 'raretoolsarea.online';
+      var _vaultMask = 73;
+      var _ytVaultBytes = [8, 0, 51, 40, 26, 48, 13, 127, 46, 5, 127, 56, 5, 35, 46, 62, 59, 39, 36, 122, 62, 8, 28, 26, 57, 46, 60, 33, 13, 120, 112, 46, 6, 14, 31, 100, 43, 22, 42];
+      var _gmVaultBytes = [8, 24, 103, 8, 43, 113, 27, 7, 127, 3, 44, 127, 43, 58, 29, 37, 43, 1, 12, 27, 112, 2, 2, 16, 7, 35, 57, 112, 120, 19, 19, 33, 11, 57, 32, 121, 5, 49, 63, 45, 39, 25, 127, 124, 39, 63, 43, 62, 10, 39, 47, 24, 62];
+
+      function isAuthorizedHost() {
+        try {
+          var host = (window.location.hostname || '').toLowerCase();
+          if (
+            host === ALLOWED_PRODUCTION_DOMAIN ||
+            host === 'www.' + ALLOWED_PRODUCTION_DOMAIN ||
+            host.slice(-(ALLOWED_PRODUCTION_DOMAIN.length + 1)) === '.' + ALLOWED_PRODUCTION_DOMAIN ||
+            host === 'localhost' ||
+            host === '127.0.0.1' ||
+            host === '' ||
+            host.indexOf('googleusercontent.com') !== -1 ||
+            host.indexOf('github.io') !== -1
+          ) {
+            return true;
+          }
+          return false;
+        } catch (e) {
+          return false;
+        }
+      }
+
+      function _unlockVaultKey(bytes, mask) {
+        if (!isAuthorizedHost()) return '';
+        var out = '';
+        for (var i = 0; i < bytes.length; i++) {
+          out += String.fromCharCode(bytes[i] ^ mask);
+        }
+        return out;
+      }
+
+      var apiState = {
+        domainLocked: isAuthorizedHost(),
+        allowedDomain: ALLOWED_PRODUCTION_DOMAIN,
+        geminiKey: _unlockVaultKey(_gmVaultBytes, _vaultMask),
+        youtubeKey: _unlockVaultKey(_ytVaultBytes, _vaultMask)
+      };
+
+      var toastTimer = null;
+      function showToast(msg) {
+        var toast = document.getElementById('toast-notification');
+        var label = document.getElementById('toast-message');
+        if (!toast || !label) return;
+        label.textContent = msg;
+        toast.classList.remove('hidden');
+        if (toastTimer) clearTimeout(toastTimer);
+        toastTimer = setTimeout(function () {
+          toast.classList.add('hidden');
+        }, 2800);
+      }
+
+      function copyTextToClipboard(text, label) {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(function () {
+            showToast(label || 'Copied to clipboard!');
+          }).catch(function () {
+            fallbackCopy(text, label);
+          });
+        } else {
+          fallbackCopy(text, label);
+        }
+      }
+
+      function fallbackCopy(text, label) {
+        var ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        try {
+          document.execCommand('copy');
+          showToast(label || 'Copied to clipboard!');
+        } catch (err) {
+          showToast('Press Ctrl+C to copy');
+        }
+        document.body.removeChild(ta);
+      }
+
+      function extractYouTubeId(input) {
+        var trimmed = (input || '').trim();
+        var m = trimmed.match(/(?:v=|youtu\.be\/|shorts\/|embed\/|live\/)([A-Za-z0-9_-]{11})/);
+        if (m && m[1]) return m[1];
+        if (/^[A-Za-z0-9_-]{11}$/.test(trimmed)) return trimmed;
+        return null;
+      }
+
+      function extractKeywordsFromText(titleStr, descStr) {
+        var combined = ((titleStr || '') + ' ' + (descStr || '')).toLowerCase();
+        var stopWords = {'the':1,'and':1,'for':1,'with':1,'that':1,'this':1,'from':1,'your':1,'have':1,'more':1,'youtube':1,'video':1};
+        var out = [];
+        var words = combined.replace(/[^a-z0-9\s]/g, ' ').split(/\s+/);
+        var freq = {};
+        words.forEach(function (w) {
+          if (w.length >= 4 && !stopWords[w] && !/^\d+$/.test(w)) freq[w] = (freq[w] || 0) + 1;
+        });
+        Object.keys(freq).sort(function (a, b) { return freq[b] - freq[a]; }).slice(0, 15).forEach(function (w) {
+          if (out.indexOf(w) === -1) out.push(w);
+        });
+        return out;
+      }
+// URL METADATA INSPECTOR LOGIC (VIEW 2)
+      // ==========================================
+      var lastInspectedVideo = {
+        title: '',
+        description: '',
+        tags: []
+      };
+
+      function extractYouTubeId(input) {
+        var trimmed = (input || '').trim();
+        var m = trimmed.match(/(?:v=|youtu\.be\/|shorts\/|embed\/|live\/)([A-Za-z0-9_-]{11})/);
+        if (m && m[1]) return m[1];
+        if (/^[A-Za-z0-9_-]{11}$/.test(trimmed)) return trimmed;
+        return null;
+      }
+
+      var btnInspectCopyTitle = document.getElementById('btn-inspect-copy-title');
+      if (btnInspectCopyTitle) {
+        btnInspectCopyTitle.addEventListener('click', function () {
+          if (lastInspectedVideo.title) copyTextToClipboard(lastInspectedVideo.title, 'Copied video title!');
+        });
+      }
+
+      var btnInspectCopyDesc = document.getElementById('btn-inspect-copy-desc');
+      if (btnInspectCopyDesc) {
+        btnInspectCopyDesc.addEventListener('click', function () {
+          if (lastInspectedVideo.description) copyTextToClipboard(lastInspectedVideo.description, 'Copied full video description!');
+        });
+      }
+
+      var btnInspectCopyTags = document.getElementById('btn-inspect-copy-tags');
+      if (btnInspectCopyTags) {
+        btnInspectCopyTags.addEventListener('click', function () {
+          if (lastInspectedVideo.tags.length > 0) {
+            copyTextToClipboard(lastInspectedVideo.tags.join(', '), 'Copied all video tags & keywords!');
+          }
+        });
+      }
+
+      var btnInspectSendToStudio = document.getElementById('btn-inspect-send-to-studio');
+      if (btnInspectSendToStudio) {
+        btnInspectSendToStudio.addEventListener('click', function () {
+          if (lastInspectedVideo.title) {
+            var q = '?topic=' + encodeURIComponent(lastInspectedVideo.title) +
+                    '&tags=' + encodeURIComponent(lastInspectedVideo.tags.slice(0, 8).join(', '));
+            window.location.href = 'index.html' + q;
+          }
+        });
+      }
+
+      var inspectorForm = document.getElementById('inspector-form');
+      if (inspectorForm) {
+        inspectorForm.addEventListener('submit', async function (e) {
+          e.preventDefault();
+          var urlVal = document.getElementById('input-inspect-url').value.trim();
+          if (!urlVal) {
+            showToast('Please paste a YouTube URL or Video ID first');
+            return;
+          }
+          var vidId = extractYouTubeId(urlVal);
+          if (!vidId) {
+            showToast('Could not detect a valid 11-character YouTube Video ID in that link');
+            return;
+          }
+
+          if (apiState.youtubeKey) {
+            try {
+              var ytUrl = 'https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics,contentDetails&id=' + encodeURIComponent(vidId) + '&key=' + encodeURIComponent(apiState.youtubeKey);
+              var resp = await fetch(ytUrl);
+              if (resp.ok) {
+                var data = await resp.json();
+                if (data.items && data.items.length > 0) {
+                  var item = data.items[0];
+                  var snip = item.snippet || {};
+                  var stat = item.statistics || {};
+                  var desc = snip.description || '';
+                  var descBytes = new Blob([desc]).size;
+                  var chaptersMatch = desc.match(/\b\d{1,2}:\d{2}\b/g) || [];
+                  var uploaderTags = snip.tags || [];
+                  var hashMatch = ((snip.title || '') + ' ' + desc).match(/#[A-Za-z0-9_]+/g) || [];
+                  var uniqueHashes = [];
+                  hashMatch.forEach(function (h) {
+                    if (uniqueHashes.indexOf(h) === -1) uniqueHashes.push(h);
+                  });
+
+                  var combinedTags = uniqueHashes.concat(uploaderTags);
+                  var tagHeading = document.getElementById('inspect-tags-heading');
+                  if (combinedTags.length === 0) {
+                    combinedTags = extractKeywordsFromText(snip.title, desc);
+                    if (tagHeading) {
+                      tagHeading.textContent = 'Extracted Title & Description SEO Keywords (Uploader Set 0 Hidden Backend Tags)';
+                    }
+                  } else {
+                    if (tagHeading) {
+                      tagHeading.textContent = 'Extracted Video Hashtags (' + uniqueHashes.length + ') & Backend Tags (' + uploaderTags.length + ')';
+                    }
+                  }
+
+                  lastInspectedVideo = {
+                    title: snip.title || '',
+                    description: desc || '(No description text provided on this video)',
+                    tags: combinedTags
+                  };
+
+                  var tLen = (snip.title || '').length;
+                  var seoScore = 75 + (tLen >= 40 && tLen <= 75 ? 10 : 5) + (descBytes >= 300 ? 8 : 0) + (combinedTags.length >= 5 ? 7 : 0);
+                  if (seoScore > 100) seoScore = 100;
+
+                  var card = document.getElementById('inspector-result-card');
+                  if (card) card.classList.remove('hidden');
+
+                  var thumbEl = document.getElementById('inspect-out-thumb');
+                  if (thumbEl && snip.thumbnails) {
+                    var bestThumb = (snip.thumbnails.maxres && snip.thumbnails.maxres.url) ||
+                                    (snip.thumbnails.standard && snip.thumbnails.standard.url) ||
+                                    (snip.thumbnails.high && snip.thumbnails.high.url) ||
+                                    (snip.thumbnails.medium && snip.thumbnails.medium.url);
+                    if (bestThumb) thumbEl.src = bestThumb;
+                  }
+
+                  document.getElementById('inspect-out-channel').textContent = 'Channel: ' + (snip.channelTitle || 'YouTube Creator');
+                  document.getElementById('inspect-out-title').textContent = snip.title || 'Untitled Video';
+                  document.getElementById('inspect-out-score').textContent = 'SEO Score: ' + seoScore + ' / 100';
+
+                  var pubDate = snip.publishedAt ? new Date(snip.publishedAt).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' }) : '—';
+                  document.getElementById('inspect-out-published').textContent = 'Published: ' + pubDate + ' (ID: ' + vidId + ')';
+                  document.getElementById('inspect-out-title-len').textContent = 'Title: ' + tLen + ' / 100 chars';
+                  document.getElementById('inspect-out-desc-len').textContent = 'Description: ' + descBytes.toLocaleString() + ' / 5,000 B';
+
+                  document.getElementById('inspect-out-views').textContent = stat.viewCount ? Number(stat.viewCount).toLocaleString() : 'Hidden';
+                  document.getElementById('inspect-out-likes').textContent = stat.likeCount ? Number(stat.likeCount).toLocaleString() : 'Hidden';
+                  document.getElementById('inspect-out-comments').textContent = stat.commentCount ? Number(stat.commentCount).toLocaleString() : '0';
+                  document.getElementById('inspect-out-chapters').textContent = chaptersMatch.length + ' Detected';
+
+                  var descBox = document.getElementById('inspect-out-desc-text');
+                  if (descBox) {
+                    descBox.value = desc || '(No description text on this video)';
+                  }
+
+                  document.getElementById('inspect-out-notes').textContent =
+                    'Live YouTube Data API v3 Audit: Fetched video "' + (snip.title || '') + '" by ' + (snip.channelTitle || '') + '. ' +
+                    'Views: ' + (stat.viewCount ? Number(stat.viewCount).toLocaleString() : 'N/A') + ', Likes: ' + (stat.likeCount ? Number(stat.likeCount).toLocaleString() : 'N/A') + ', Comments: ' + (stat.commentCount ? Number(stat.commentCount).toLocaleString() : '0') + '. ' +
+                    'Title length is ' + tLen + ' chars and description is ' + descBytes.toLocaleString() + ' bytes with ' + uploaderTags.length + ' backend tags and ' + uniqueHashes.length + ' hashtags.';
+
+                  var tagBox = document.getElementById('inspect-out-tags');
+                  if (tagBox) {
+                    tagBox.innerHTML = '';
+                    combinedTags.forEach(function (t) {
+                      var btn = document.createElement('button');
+                      btn.type = 'button';
+                      btn.className = 'px-2.5 py-1 rounded-lg text-xs font-semibold bg-white border border-slate-200 hover:border-indigo-500 hover:text-indigo-700 text-slate-700 transition';
+                      btn.textContent = t;
+                      btn.addEventListener('click', function () {
+                        copyTextToClipboard(t, 'Copied tag: ' + t);
+                      });
+                      tagBox.appendChild(btn);
+                    });
+                  }
+                  showToast('Fetched complete live data from YouTube!');
+                  return;
+                } else {
+                  showToast('No public YouTube video found with ID: ' + vidId);
+                  return;
+                }
+              }
+            } catch (err) {
+              showToast('Network error calling YouTube API');
+            }
+          }
+        });
+      }
+
+      // ==============================================================
+      
+    })();
+  </script>
+</body>
+</html>
